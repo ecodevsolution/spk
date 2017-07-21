@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\TblRoleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tbl Roles';
+$this->title = 'Role';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-role-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tbl Role', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Role', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

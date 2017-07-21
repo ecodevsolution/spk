@@ -55,20 +55,7 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset>
-                            <div class="form-group">
-                                <div class="select">
-                                    <label class="col-md-2 col-form-label">PIC</label>
-                                    <div class="col-md-8">
-                                        <?= $form->field($model, 'idpegawai')->dropDownList(
-                                            ArrayHelper::map(UserForm::find()->all(),'id', 'name'),
-                                            ['prompt'=>'- Choose -',
-                                             'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
-                                            ?>         
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
+                       
                         <fieldset>
                             <div class="form-group">
                                 <div class="select">
@@ -150,7 +137,7 @@
                                                     <div class="col-sm-6 col-xs-12">
                                                         <div class="form-group">															
                                                             <?= $form->field($modeldetails, "[{$i}]idpegawai")->dropDownList(
-                                                                ArrayHelper::map(UserForm::find()->where(['status'=>10])->AndWhere(['idrole'=>1])->all(),'id', 'name'),
+                                                                ArrayHelper::map(UserForm::find()->where(['status'=>10])->AndWhere(['idrole'=>2])->all(),'id', 'name'),
                                                                 ['prompt'=>'- Choose -',
                                                                 'style'=>'height: calc(3.25rem + 2px);'])->label('Nama Pegawai');                 
                                                                 ?>

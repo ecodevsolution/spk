@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\TblDaftarhargaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tbl Daftarhargas';
+$this->title = 'Daftar Harga';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-daftarharga-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tbl Daftarharga', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Daftar Harga', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'kode_pekerjaan',
+            // 'kode_pekerjaan',
             'item_pekerjaan',
             'harga_pekerjaan',
             'satuan',

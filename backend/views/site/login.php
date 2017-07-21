@@ -37,11 +37,7 @@ $this->title = 'Login';
                                     </div>
                                     <div class="text-center">
                                         <?= Html::submitButton('Sign in', ['class' => 'btn btn-rose btn-wd btn-lg', 'name' => 'login-button']) ?>                                        
-                                        <p>New to Inspire?&nbsp;&nbsp;
-                                            <a href="register.html">
-                                                <i class="ti-id-badge"></i> Register
-                                            </a>
-                                        </p>
+                                       
 
                                     </div>
                                 </div>

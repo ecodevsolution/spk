@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\TblRequestSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tbl Requests';
+$this->title = 'Form Request';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-request-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tbl Request', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Form Request', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

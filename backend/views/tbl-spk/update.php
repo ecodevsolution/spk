@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'modeldetail' => (empty($modeldetail)) ? [new TblDetailspk] : $modeldetail,
     ]) ?>
 
 </div>

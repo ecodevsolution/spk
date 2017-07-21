@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\UserFormSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'User Forms';
+$this->title = 'Data Pegawai';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-form-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create User Form', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Data Pegawai', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,28 +24,27 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'idjabatan',
-            'idrole',
+            // 'id',
+            // 'idjabatan',
+            // 'idrole',
             'username',
             'name',
             // 'no_ktp',
             // 'alamat_ktp',
             // 'alamat',
             // 'tgl_lahir',
-            // 'jenis_kelamin',
+            'jenis_kelamin',
             // 'agama',
-            // 'no_telp',
+             'no_telp',
             // 'auth_key',
             // 'idclient',
             // 'perusahaan',
             // 'password_hash',
             // 'password_reset_token',
-            // 'email:email',
+             'email:email',
             // 'status',
             // 'created_at',
             // 'updated_at',
-            // 'idrole',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

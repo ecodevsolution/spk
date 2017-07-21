@@ -25,7 +25,7 @@ AppAsset::register($this);
 	                <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navigation-example-2">
 	                    <span class="navbar-toggler-icon"></span>
 	                </button>
-	                <a class="navbar-brand" href="../index.html">Inspire Admin</a>
+	                <a class="navbar-brand" href="#">Administrator</a>
 	            </div>
 	        </div>
 	    </nav>
@@ -43,36 +43,13 @@ AppAsset::register($this);
             	</div>
 	            <footer class="footer">
 	                <div class="container">
-	                    <nav class="float-left-xl">
-	                        <ul>
-	                            <li>
-	                                <a href="#">
-	                                    Home
-	                                </a>
-	                            </li>
-	                            <li>
-	                                <a href="#">
-	                                    Company
-	                                </a>
-	                            </li>
-	                            <li>
-	                                <a href="#">
-	                                    Portfolio
-	                                </a>
-	                            </li>
-	                            <li>
-	                                <a href="#">
-	                                    Blog
-	                                </a>
-	                            </li>
-	                        </ul>
-	                    </nav>
+	                   
 	                    <p class="copyright float-right">
 	                        &copy;
 	                        <script>
 	                            document.write(new Date().getFullYear())
 	                        </script>
-	                        <a href="#">Inspire Admin</a>
+	                        <a href="#">Billy Fajri</a>
 	                    </p>
 	                </div>
 	            </footer>

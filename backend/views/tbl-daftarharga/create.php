@@ -6,13 +6,13 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TblDaftarharga */
 
-$this->title = 'Create Tbl Daftarharga';
+$this->title = 'Create Master Harga';
 $this->params['breadcrumbs'][] = ['label' => 'Tbl Daftarhargas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-daftarharga-create">
 
-    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
+    <h2><?= Html::encode($this->title) ?></h2>
 
     <?= $this->render('_form', [
         'model' => $model,

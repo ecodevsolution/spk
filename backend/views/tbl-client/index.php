@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\TblClientSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tbl Clients';
+$this->title = 'Data Client';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-client-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tbl Client', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create data Client', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,10 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'username',
-            'idjabatan',
-            'idrole',
+            // 'idjabatan',
+            // 'idrole',
             'name',
             // 'no_ktp',
             // 'alamat_ktp',
@@ -35,9 +35,9 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'tgl_lahir',
             // 'jenis_kelamin',
             // 'agama',
-            // 'no_telp',
-            // 'perusahaan',
-            // 'email:email',
+            'no_telp',
+            'perusahaan',
+            'email:email',
             // 'password_hash',
             // 'auth_key',
             // 'password_reset_token',
