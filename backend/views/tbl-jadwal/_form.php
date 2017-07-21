@@ -20,7 +20,7 @@ use backend\models\TblSpk;
                                             ]
                                         ]); ?>                                
                                     <div class="header card-header-text">
-                                        <h4 class="title">Jadwal Kerja</h4>
+                                        <h4 class="title"></h4>
                                     </div>
                                     <div class="content">
 
