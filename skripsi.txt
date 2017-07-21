@@ -1,0 +1,40 @@
+Dropdown
+tampilan home / dashboard
+ikon
+notifikasi
+pegawai : view data pegawai +report
+tbl jabatan : +view +report
+tbl absensi : +detail absensi +view +report
+client : view data client +report
+tbl request :+view +report
+tbl daftarharga :+view +report
+tbl penawaran : +detail penawaran +view +report
+tbl spk : +detailspk +view +report
+tbl jadwal kerja : detailjadwal kerja +view + report
+tbl pembayaran : +view + report
+tbl penggajian : detail penggajian +view + report
+
+
+Dropdown
+PEgawai ga bisa update
+tampilan id tampilkan namanya jangan idnya.
+form request milih clien masih muncul data pegawai.
+edit penawaran detail ga muncul atau edit detail
+detail spk data pegawai masih data client
+id dpk penawaran dll yang tidak auto increment dibuat otomatis sesuai tglbulantahun dibuat
+
+
+
+GIT PULL
+- klik kanan GIT GBASH UI HERE
+- git pull origin master
+> git remote add origin https://github.com/ecodevsolution/spk.git
+
+
+GIT PUSH
+- klik kanan GIT GUI HERE
+- STAGE CHANGED
+- ISI COMMENT
+- COMMIT
+- PUSH
+- ecodevsolution | samp0rnam1ld
