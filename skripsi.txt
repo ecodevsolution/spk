@@ -15,8 +15,8 @@ tbl pembayaran : +view + report
 tbl penggajian : detail penggajian +view + report
 
 
-Dropdown
-PEgawai ga bisa update
+Dropdown			->done
+PEgawai ga bisa update		->done
 tampilan id tampilkan namanya jangan idnya.
 form request milih clien masih muncul data pegawai.
 edit penawaran detail ga muncul atau edit detail

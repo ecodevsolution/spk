@@ -41,6 +41,10 @@ class TblClient extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function generateAuthKey()
+    {
+        $this->auth_key = Yii::$app->security->generateRandomString();
+    }     
     public function rules()
     {
         return [

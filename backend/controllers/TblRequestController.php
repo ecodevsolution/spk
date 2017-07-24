@@ -64,6 +64,8 @@ class TblRequestController extends Controller
     public function actionCreate()
     {
         $model = new TblRequest();
+        $req = mt_rand(10,99);
+        $req = date('ymd').''.$req;
 
         if ($model->load(Yii::$app->request->post())){
             
@@ -73,6 +75,7 @@ class TblRequestController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'req' => $req,
             ]);
         }
     }
@@ -86,12 +89,13 @@ class TblRequestController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $req = $model->idrequest;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->idrequest]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'req' => $req,
             ]);
         }
     }

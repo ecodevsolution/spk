@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle
         'css/font-awesome.min.css',
         'css/font-muli.css',
         'css/themify-icons.css',
+        'http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
 
     ];
     public $js = [

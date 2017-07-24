@@ -91,6 +91,8 @@ class TblPenawaranController extends Controller
     {
         $model = new TblPenawaran();
         $modeldetail = [new TblDetailpenawaran];
+        $ask = mt_rand(10,99);
+        $ask = date('ymd').''.$ask;
         
         $modeldetail = Model::createMultiple(TblDetailpenawaran::classname());
         if ($model->load(Yii::$app->request->post()) && Model::loadMultiple($modeldetail, Yii::$app->request->post())){
@@ -130,6 +132,7 @@ class TblPenawaranController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'modeldetail' => (empty($modeldetail)) ? [new TblDetailpenawaran] : $modeldetail,
+                'ask' =>$ask,
             ]);
         }
     }

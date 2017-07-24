@@ -64,12 +64,15 @@ class UserFormController extends Controller
     public function actionCreate()
     {
         $model = new UserForm();
+        $nik = mt_rand(100000,999999);
+        $nik = date('y').''.$nik;
 
         if ($model->load(Yii::$app->request->post())){
 
            
                 $model->password_hash = Yii::$app->security->generatePasswordHash($model->password_hash);
-                $model->created_at = date('Ydmh');                
+                $model->created_at = date('Ydmh'); 
+                $model->tgl_lahir = date('Y-m-d',strtotime($model->tgl_lahir));               
                 $model->generateAuthKey();
                 $model->save(false);
 
@@ -77,6 +80,7 @@ class UserFormController extends Controller
         }else {
             return $this->render('create', [
                 'model' => $model,
+                'nik' => $nik
             ]);
         }
     }
@@ -90,12 +94,16 @@ class UserFormController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $nik = $model->username;
+        if ($model->load(Yii::$app->request->post())){
+            
+            $model->password_hash = $model->password_hash;
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'nik' => $nik,
             ]);
         }
     }

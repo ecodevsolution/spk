@@ -54,6 +54,9 @@ class TblSpk extends \yii\db\ActiveRecord
             'harga_pekerjaan' => 'Harga Pekerjaan',
         ];
     }
-
+    public function getTblPenawaran()
+    {
+        return $this->hasOne(TblPenawaran::className(), ['idpenawaran' => 'idpenawaran']);
+    }
     
 }

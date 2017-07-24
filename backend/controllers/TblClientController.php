@@ -65,7 +65,13 @@ class TblClientController extends Controller
     {
         $model = new TblClient();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())){
+            $model->password_hash = Yii::$app->security->generatePasswordHash($model->password_hash);
+            $model->created_at = date('Ydmh'); 
+            $model->tgl_lahir = date('Y-m-d',strtotime($model->tgl_lahir));         
+            $model->generateAuthKey();
+            $model->idrole = 2;
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -84,7 +90,9 @@ class TblClientController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())){
+            $model->password_hash = $model->password_hash;
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

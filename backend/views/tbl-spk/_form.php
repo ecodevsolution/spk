@@ -12,30 +12,29 @@
     /* @var $this yii\web\View */
     /* @var $model backend\models\TblSpk */
     /* @var $form yii\widgets\ActiveForm */
-
+    
     $this->registerJsFile("https://code.jquery.com/jquery-1.12.4.js",
-			['position' => View::POS_HEAD]);
-			
+    ['position' => View::POS_HEAD]);
+    
     $this->registerJsFile("https://code.jquery.com/ui/1.12.1/jquery-ui.js",
-			['position' => View::POS_HEAD]);
-
+    ['position' => View::POS_HEAD]);
+    
     ?>
-
-    <script>
-  $( function() {
-    $( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
-  } );
-  
-   $( function() {
-    $( "#datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
-  } );
-  </script>
+<script>
+    $( function() {
+      $( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
+    } );
+    
+     $( function() {
+      $( "#datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
+    } );
+</script>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                   <?php 
+                    <?php 
                         $form = ActiveForm::begin([
                         'options'=>[                        			
                         			'role'=>'form',
@@ -49,17 +48,16 @@
                     <div class="content">
                         <fieldset>
                             <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Id SPK</label>
+                                <label class="col-md-2 col-form-label">ID SPK</label>
                                 <div class="col-md-8">
-                                    <?= $form->field($model, 'idspk')->textInput(['maxlength' => true,'class'=>'form-control'])->label(false); ?>
+                                    <?= $form->field($model, 'idspk')->textInput(['maxlength' => true,'class'=>'form-control' , 'value'=>$spk])->label(false); ?>
                                 </div>
                             </div>
                         </fieldset>
-                       
                         <fieldset>
                             <div class="form-group">
                                 <div class="select">
-                                    <label class="col-md-2 col-form-label">ID Penawaran</label>
+                                    <label class="col-md-2 col-form-label">Penawaran</label>
                                     <div class="col-md-8">
                                         <?= $form->field($model, 'idpenawaran')->dropDownList(
                                             ArrayHelper::map(TblPenawaran::find()->all(),'idpenawaran', 'idpenawaran'),
@@ -70,12 +68,11 @@
                                 </div>
                             </div>
                         </fieldset>
-                        
                         <fieldset>
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">Area Pekerjaan</label>
                                 <div class="col-md-8">                                                
-                                    <?= $form->field($model, 'area_pekerjaan')->textInput(['maxlength' => true,'class'=>'form-control'])->label(false); ?>
+                                    <?= $form->field($model, 'area_pekerjaan')->textArea(['maxlength' => true,'class'=>'form-control','rows'=>5])->label(false); ?>
                                 </div>
                             </div>
                         </fieldset>
@@ -137,13 +134,12 @@
                                                     <div class="col-sm-6 col-xs-12">
                                                         <div class="form-group">															
                                                             <?= $form->field($modeldetails, "[{$i}]idpegawai")->dropDownList(
-                                                                ArrayHelper::map(UserForm::find()->where(['status'=>10])->AndWhere(['idrole'=>2])->all(),'id', 'name'),
+                                                                ArrayHelper::map(UserForm::find()->where(['status'=>10])->AndWhere(['idrole'=>1])->all(),'id', 'name'),
                                                                 ['prompt'=>'- Choose -',
                                                                 'style'=>'height: calc(3.25rem + 2px);'])->label('Nama Pegawai');                 
                                                                 ?>
                                                         </div>
                                                     </div>
-                                                  
                                                 </div>
                                             </div>
                                             <!-- .row -->

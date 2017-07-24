@@ -31,9 +31,9 @@
                     <div class="content">
                         <fieldset>
                             <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Id Penawaran</label>
+                                <label class="col-md-2 col-form-label">ID Penawaran</label>
                                 <div class="col-md-8">
-                                    <?= $form->field($model, 'idpenawaran')->textInput(['maxlength' => true,'class'=>'form-control'])->label(false); ?>
+                                    <?= $form->field($model, 'idpenawaran')->textInput(['maxlength' => true,'class'=>'form-control', 'value'=>$ask])->label(false); ?>
                                 </div>
                             </div>
                         </fieldset>

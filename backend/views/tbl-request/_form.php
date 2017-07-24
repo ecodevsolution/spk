@@ -26,7 +26,7 @@
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">ID Request</label>
                                 <div class="col-md-8"> 
-                                    <?= $form->field($model, 'idrequest')->textInput(['maxlength' => true])->label(false) ?>                                               
+                                    <?= $form->field($model, 'idrequest')->textInput(['maxlength' => true,'value'=>$req])->label(false) ?>                                               
                                 </div>
                             </div>
                         </fieldset>

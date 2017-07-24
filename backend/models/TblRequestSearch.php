@@ -15,10 +15,12 @@ class TblRequestSearch extends TblRequest
     /**
      * @inheritdoc
      */
+    public $client;
+
     public function rules()
     {
         return [
-            [['idrequest', 'idclient', 'nama_pekerjaan', 'status'], 'safe'],
+            [['client','idrequest', 'idclient', 'nama_pekerjaan', 'status'], 'safe'],
         ];
     }
 
@@ -41,6 +43,7 @@ class TblRequestSearch extends TblRequest
     public function search($params)
     {
         $query = TblRequest::find();
+        $query->joinWith(['userForm']);
 
         // add conditions that should always apply here
 
@@ -48,17 +51,29 @@ class TblRequestSearch extends TblRequest
             'query' => $query,
         ]);
 
-        $this->load($params);
+        //category
+		$dataProvider->sort->attributes['client']=[ 
+			'asc'=>['user.name' => SORT_ASC],
+			'desc'=>['user.name'=> SORT_DESC],
+		];		
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
+
+          // grid filtering conditions
+        $query->andFilterWhere([
+            'idrequest' => $this->idrequest,
+			'idclient' => $this->idclient,
+			'client' => $this->idclient,
+            'nama_pekerjaan' => $this->nama_pekerjaan,
+            'status' => $this->status            
+        ]);
 
         // grid filtering conditions
         $query->andFilterWhere(['like', 'idrequest', $this->idrequest])
             ->andFilterWhere(['like', 'idclient', $this->idclient])
+            ->andFilterWhere(['like', 'client', $this->idclient])
             ->andFilterWhere(['like', 'nama_pekerjaan', $this->nama_pekerjaan])
             ->andFilterWhere(['like', 'status', $this->status]);
 

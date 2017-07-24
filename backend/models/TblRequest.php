@@ -25,9 +25,9 @@ class TblRequest extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-     public function getTblClient()
+     public function getUserForm()
     {
-        return $this->hasOne(TblClient::className(), ['id' => 'idclient']);
+        return $this->hasOne(UserForm::className(), ['id' => 'idclient']);
     }
     
     public function rules()

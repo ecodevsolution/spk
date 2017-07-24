@@ -68,18 +68,25 @@ class TblSpkController extends Controller
     public function actionCreate()
     {
         $model = new TblSpk();
+        $spk = mt_rand(10,99);
+        $spk = date('ymd').''.$spk;
 
         $modeldetail = [new TblDetailspk];
         
         $modeldetail = Model::createMultiple(TblDetailspk::classname());
         if ($model->load(Yii::$app->request->post()) && Model::loadMultiple($modeldetail, Yii::$app->request->post())){
             
-            
-             $model->save();
+             $price = TblPenawaran::findOne($model->idpenawaran);
+
+             $model->tgl_mulai = date('Y-m-d',strtotime($model->tgl_mulai)); 
+             $model->tgl_selesai = date('Y-m-d',strtotime($model->tgl_selesai)); 
+             $model->idpegawai = Yii::$app->user->identity->id;
+             $model->harga_pekerjaan = $price->total_penawaran;
+             $model->save(false);
 
              foreach ($modeldetail as $key => $modeldetails):
-
-                $modeldetails->save();
+                $modeldetails->idspk = $model->idspk;
+                $modeldetails->save(false);
              endforeach;
 
             return $this->redirect(['view', 'id' => $model->idspk]);
@@ -87,6 +94,7 @@ class TblSpkController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'modeldetail' => (empty($modeldetail)) ? [new TblDetailspk] : $modeldetail,
+                'spk'=> $spk,
             ]);
         }
     }
@@ -111,7 +119,9 @@ class TblSpkController extends Controller
                                 <div class='select'>
                                     <label class='col-md-2 col-form-label'>Nama Pekerjaan</label>
                                     <div class='col-md-8'>
+                                        <div class='form-group'>
                                             <input type='text' class='form-control' readonly='true' value='".ucfirst($model->tblRequest->nama_pekerjaan)."'>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +132,9 @@ class TblSpkController extends Controller
                                 <div class='select'>
                                     <label class='col-md-2 col-form-label'>Total Penawaran</label>
                                     <div class='col-md-8'>
+                                         <div class='form-group'>
                                             <input type='text' class='form-control' readonly='true' value='".number_format($model->total_penawaran,0,".",".")."'>
+                                         </div>
                                     </div>
                                 </div>
                             </div>

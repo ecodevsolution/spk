@@ -25,7 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'idpenawaran',
-            'idrequest',
+             [
+				'attribute'=>'request',
+				'value'=>'tblRequest.nama_pekerjaan',
+			],
             'total_penawaran',
 
             ['class' => 'yii\grid\ActionColumn'],
