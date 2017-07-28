@@ -5,10 +5,12 @@ namespace backend\controllers;
 use Yii;
 use backend\models\TblJadwal;
 use backend\models\TblJadwalSearch;
+use backend\models\TblSpk;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use backend\models\TblDetailJadwal;
+use backend\models\Model;
 /**
  * TblJadwalController implements the CRUD actions for TblJadwal model.
  */
@@ -64,12 +66,23 @@ class TblJadwalController extends Controller
     public function actionCreate()
     {
         $model = new TblJadwal();
+        $modeldetail = [new TblDetailJadwal];
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+         $modeldetail = Model::createMultiple(TblDetailJadwal::classname());
+        if ($model->load(Yii::$app->request->post()) && Model::loadMultiple($modeldetail, Yii::$app->request->post())){
+            
+            $model->save();
+            $model->status_jadwal = 'ON GOING';
+             foreach ($modeldetail as $key => $modeldetails):
+                $modeldetails->idjadwal = $model->idjadwal;                						                    
+                $modeldetails->save();                    
+			endforeach;
+
             return $this->redirect(['view', 'id' => $model->idjadwal]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'modeldetail' => (empty($modeldetail)) ? [new TblDetailjadwal] : $modeldetail,
             ]);
         }
     }
@@ -80,6 +93,65 @@ class TblJadwalController extends Controller
      * @param integer $id
      * @return mixed
      */
+
+    public function actionDetail($id){
+        $model = TblSpk::FindOne($id);
+
+        echo "
+                        <fieldset>
+                            <div class='form-group'>
+                                <div class='select'>
+                                    <label class='col-md-2 col-form-label'>Area Pekerjaa</label>
+                                    <div class='col-md-8'>
+                                        <div class='form-group'>
+                                            <input type='text' class='form-control' readonly='true' value='".ucfirst($model->area_pekerjaan)."'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <div class='form-group'>
+                                <div class='select'>
+                                    <label class='col-md-2 col-form-label'>Tanggal Mulai</label>
+                                    <div class='col-md-8'>
+                                         <div class='form-group'>
+                                            <input type='text' class='form-control' readonly='true' value='".date('d M Y',strtotime($model->tgl_mulai))."'>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <div class='form-group'>
+                                <div class='select'>
+                                    <label class='col-md-2 col-form-label'>Tanggal Selesai</label>
+                                    <div class='col-md-8'>
+                                         <div class='form-group'>
+                                            <input type='text' class='form-control' readonly='true' value='".date('d M Y',strtotime($model->tgl_selesai))."'>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <div class='form-group'>
+                                <div class='select'>
+                                    <label class='col-md-2 col-form-label'>Total Biaya</label>
+                                    <div class='col-md-8'>
+                                         <div class='form-group'>
+                                            <input type='text' class='form-control' readonly='true' value='".number_format($model->harga_pekerjaan,0,",",",")."'>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>";
+
+    }
+
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);

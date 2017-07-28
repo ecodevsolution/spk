@@ -88,6 +88,7 @@
                                                                 'style'=>'height: calc(3.25rem + 2px);'])->label('Nama Pegawai');                 
                                                                 ?>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -124,7 +125,7 @@
     				$.ajax
     				({
     					type: 'GET',
-    					url: '?r=tbl-jadwal/detail-jadwal',
+    					url: '?r=tbl-jadwal/detail',
     					data: dataString,
     					cache: false,
     					success: function(html)
@@ -134,6 +135,9 @@
     				});
     			});
     		});
+
+
+
     	}) ( jQuery );
     ");
     ?>
