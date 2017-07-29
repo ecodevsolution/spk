@@ -109,7 +109,7 @@
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">Jenis Kelamin</label>
                                 <div class="col-md-8">
-                                    <?= $form->field($model, 'jenis_kelamin')->dropDownList([ 'P' => 'Perempuan', 'L' => 'Laki-Laki'],  ['prompt'=>'- Choose -',
+                                    <?= $form->field($model, 'jenis_kelamin')->dropDownList([ 'Perempuan' => 'Perempuan', 'Laki-Laki' => 'Laki-Laki'],  ['prompt'=>'- Choose -',
                                          'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
                                         ?>
                                 </div>
@@ -119,7 +119,7 @@
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">Agama</label>
                                 <div class="col-md-8">
-                                    <?= $form->field($model, 'agama')->dropDownList([ '1' => 'Islam', '2' => 'Kristen','3'=>'Hindu','4'=>'Budha','5'=>'Konghucu'],  ['prompt'=>'- Choose -',
+                                    <?= $form->field($model, 'agama')->dropDownList([ 'Islam' => 'Islam', 'Kristen' => 'Kristen','Hindu'=>'Hindu','Budha'=>'Budha','Katholik'=>'Katholik'],  ['prompt'=>'- Choose -',
                                          'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
                                         ?>                                                  
                                 </div>

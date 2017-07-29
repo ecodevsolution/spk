@@ -34,8 +34,9 @@
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">Client</label>
                                 <div class="col-md-8"> 
+                                   
                                     <?= $form->field($model, 'idclient')->dropDownList(
-                                        ArrayHelper::map(TblClient::find()->all(),'id', 'name'),
+                                        ArrayHelper::map(TblClient::find()->where(['idrole'=>2])->all(),'id', 'name'),
                                         ['prompt'=>'- Choose -',
                                          'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
                                         ?>  

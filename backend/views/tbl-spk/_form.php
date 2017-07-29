@@ -133,7 +133,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-6 col-xs-12">
                                                         <div class="form-group">															
-                                                            <?= $form->field($modeldetails, "[{$i}]idpegawai")->dropDownList(
+                                                            <?= $form->field($modeldetails, "[{$i}]id")->dropDownList(
                                                                 ArrayHelper::map(UserForm::find()->where(['status'=>10])->AndWhere(['idrole'=>1])->all(),'id', 'name'),
                                                                 ['prompt'=>'- Choose -',
                                                                 'style'=>'height: calc(3.25rem + 2px);'])->label('Nama Pegawai');                 

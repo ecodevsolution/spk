@@ -81,7 +81,7 @@ class UserForm extends \yii\db\ActiveRecord
             'name' => 'Name',
             'no_ktp' => 'No Ktp',
             'alamat_ktp' => 'Alamat Ktp',
-            'alamat' => 'Alamat',
+            'alamat' => 'Alamat Korespondensi',
             'tgl_lahir' => 'Tgl Lahir',
             'jenis_kelamin' => 'Jenis Kelamin',
             'agama' => 'Agama',

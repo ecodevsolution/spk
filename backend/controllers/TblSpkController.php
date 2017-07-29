@@ -80,7 +80,7 @@ class TblSpkController extends Controller
 
              $model->tgl_mulai = date('Y-m-d',strtotime($model->tgl_mulai)); 
              $model->tgl_selesai = date('Y-m-d',strtotime($model->tgl_selesai)); 
-             $model->idpegawai = Yii::$app->user->identity->id;
+             $model->id = Yii::$app->user->identity->id;
              $model->harga_pekerjaan = $price->total_penawaran;
              $model->save(false);
 

@@ -18,7 +18,7 @@ class TblSpkSearch extends TblSpk
     public function rules()
     {
         return [
-            [['idspk', 'idpegawai', 'idpenawaran', 'area_pekerjaan', 'tgl_mulai', 'tgl_selesai'], 'safe'],
+            [['idspk', 'id', 'idpenawaran', 'area_pekerjaan', 'tgl_mulai', 'tgl_selesai'], 'safe'],
             [['harga_pekerjaan'], 'number'],
         ];
     }
@@ -65,7 +65,6 @@ class TblSpkSearch extends TblSpk
         ]);
 
         $query->andFilterWhere(['like', 'idspk', $this->idspk])
-            ->andFilterWhere(['like', 'idpegawai', $this->idpegawai])
             ->andFilterWhere(['like', 'idpenawaran', $this->idpenawaran])
             ->andFilterWhere(['like', 'area_pekerjaan', $this->area_pekerjaan]);
 

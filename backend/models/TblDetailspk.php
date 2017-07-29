@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "tbl_detailspk".
  *
  * @property string $idspk
- * @property string $idpegawai
+ * @property string $id
  */
 class TblDetailspk extends \yii\db\ActiveRecord
 {
@@ -26,7 +26,7 @@ class TblDetailspk extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idspk', 'idpegawai'], 'string', 'max' => 8],
+            [['idspk', 'id'], 'string', 'max' => 8],
         ];
     }
 
@@ -37,7 +37,7 @@ class TblDetailspk extends \yii\db\ActiveRecord
     {
         return [
             'idspk' => 'Idspk',
-            'idpegawai' => 'Idpegawai',
+            'id' => 'Id',
         ];
     }
 }
