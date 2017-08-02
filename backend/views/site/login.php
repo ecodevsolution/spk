@@ -12,6 +12,7 @@ $this->title = 'Login';
 
                     <div class="row">
                         <div class="col-lg-4 col-md-6 offset-lg-4 offset-md-3">
+                        <p class="text-center"><img src="img/logo.png"></p>
 
                             <?php $form = ActiveForm::begin(['enableClientValidation' => false]); ?>
                                 <div class="card card-login card-hidden">

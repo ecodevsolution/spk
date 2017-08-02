@@ -25,7 +25,7 @@ AppAsset::register($this);
 	                <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navigation-example-2">
 	                    <span class="navbar-toggler-icon"></span>
 	                </button>
-	                <a class="navbar-brand" href="#">Administrator</a>
+	                <a class="navbar-brand" href="#"></a>
 	            </div>
 	        </div>
 	    </nav>

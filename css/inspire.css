@@ -4127,7 +4127,7 @@ strong {
 
 /*     General overwrite     */
 body {
-  color: #364150;
+  color: #0275d8;
   font-size: 14px;
   font-family: 'Muli', Arial, sans-serif; }
   body .wrapper {
@@ -8744,7 +8744,8 @@ footer {
 
 .row {
   margin-right: -10px;
-  margin-left: -10px; }
+  margin-left: -10px;
+color: #364150 }
 
 /*
  *----------------------------------------------------------
