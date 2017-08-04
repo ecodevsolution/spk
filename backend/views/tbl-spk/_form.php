@@ -132,12 +132,24 @@
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-sm-6 col-xs-12">
-                                                        <div class="form-group">															
-                                                            <?= $form->field($modeldetails, "[{$i}]idpegawai")->dropDownList(
+                                                        <div class="form-group">	
+                                                            <?php                                                              
+                                                                $connection = \Yii::$app->db;
+                                                                $sql = $connection->createCommand("SELECT * FROM `user` WHERE id NOT IN (SELECT DISTINCT idpegawai FROM tbl_spk WHERE DATE(NOW()) <=  tgl_selesai)");
+                                                                $modelx = $sql->queryAll();
+                                                                $data = array();
+                                                            ?>
+                                                            <?php
+																foreach ($modelx as $modelxy)
+																$data[$modelxy['id']] = $modelxy['username'] . ' - '. $modelxy['name'];     
+																echo $form->field($modeldetails, "[{$i}]idpegawai")->dropDownList($data ,array('prompt' => '--Choose--', 'style'=>'height: calc(3.25rem + 2px)'))->label(false);	 
+														
+															?>														
+                                                            <!--<?= $form->field($modeldetails, "[{$i}]idpegawai")->dropDownList(
                                                                 ArrayHelper::map(UserForm::find()->where(['status'=>10])->AndWhere(['idrole'=>1])->all(),'id', 'name'),
                                                                 ['prompt'=>'- Choose -',
                                                                 'style'=>'height: calc(3.25rem + 2px);'])->label('Nama Pegawai');                 
-                                                                ?>
+                                                                ?>-->
                                                         </div>
                                                     </div>
                                                 </div>
