@@ -135,7 +135,7 @@
                                                         <div class="form-group">	
                                                             <?php                                                              
                                                                 $connection = \Yii::$app->db;
-                                                                $sql = $connection->createCommand("SELECT * FROM `user` WHERE id NOT IN (SELECT DISTINCT idpegawai FROM tbl_spk WHERE DATE(NOW()) <=  tgl_selesai)");
+                                                                $sql = $connection->createCommand("SELECT * FROM `user` WHERE id NOT IN (SELECT DISTINCT b.idpegawai FROM tbl_spk a join tbl_detailspk b ON a.idspk = b.idspk WHERE DATE(NOW()) <=  a.tgl_selesai) AND idrole <> 2");
                                                                 $modelx = $sql->queryAll();
                                                                 $data = array();
                                                             ?>
