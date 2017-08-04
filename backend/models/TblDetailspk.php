@@ -26,7 +26,7 @@ class TblDetailspk extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idspk', 'ididpegawai'], 'string', 'max' => 8],
+            [['idspk', 'idpegawai'], 'string', 'max' => 8],
         ];
     }
 
@@ -42,7 +42,7 @@ class TblDetailspk extends \yii\db\ActiveRecord
     {
         return [
             'idspk' => 'Idspk',
-            'id' => 'Ididpegawai',
+            'idpegawai' => 'Idpegawai',
         ];
     }
 }

@@ -85,11 +85,12 @@ class TblSpkController extends Controller
              $model->save(false);
 
              foreach ($modeldetail as $key => $modeldetails):
-                $modeldetails->idspk = $model->idspk;
-                $modeldetails->save(false);                
+                $modeldetails->idspk = $model->idspk;                
+                 $modeldetails->save(false);          
+                var_dump($modeldetails);      
              endforeach;
 
-           return $this->redirect(['view', 'id' => $model->idspk]);
+           //return $this->redirect(['view', 'id' => $model->idspk]);
         } else {
             return $this->render('create', [
                 'model' => $model,
