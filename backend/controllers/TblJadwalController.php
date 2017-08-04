@@ -183,19 +183,6 @@ class TblJadwalController extends Controller
                                     </div>
                                 </div>
                             </div>
-                        </fieldset>
-                        
-                        <fieldset>
-                            <div class='form-group'>
-                                <div class='select'>
-                                    <label class='col-md-2 col-form-label'>Total Biaya</label>
-                                    <div class='col-md-8'>
-                                         <div class='form-group'>
-                                            <input type='text' class='form-control' readonly='true' value='".number_format($model->harga_pekerjaan,0,",",",")."'>
-                                         </div>
-                                    </div>
-                                </div>
-                            </div>
                         </fieldset>";
 
     }

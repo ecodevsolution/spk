@@ -33,6 +33,11 @@ class TblDetailspk extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public function getUserForm()
+    {
+        return $this->hasOne(UserForm::className(), ['id' => 'idpegawai']);
+    }
     public function attributeLabels()
     {
         return [
