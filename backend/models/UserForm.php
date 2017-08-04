@@ -56,7 +56,7 @@ class UserForm extends \yii\db\ActiveRecord
             [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['idjabatan', 'agama'], 'string', 'max' => 8],
             [['name'], 'string', 'max' => 25],
-            [['no_ktp'], 'string', 'max' => 16],
+            [['no_ktp'], 'string', 'min' => 16],
             [['alamat_ktp', 'alamat'], 'string', 'max' => 50],
             [['jenis_kelamin'], 'string', 'max' => 9],
             [['no_telp'], 'string', 'max' => 14],
