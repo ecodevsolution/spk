@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\TblDetailJadwal;
+use backend\models\TblDetailSpk;
 use backend\models\Model;
 /**
  * TblJadwalController implements the CRUD actions for TblJadwal model.
@@ -66,23 +67,70 @@ class TblJadwalController extends Controller
     public function actionCreate()
     {
         $model = new TblJadwal();
-        $modeldetail = [new TblDetailJadwal];
-
-         $modeldetail = Model::createMultiple(TblDetailJadwal::classname());
-        if ($model->load(Yii::$app->request->post()) && Model::loadMultiple($modeldetail, Yii::$app->request->post())){
+        
+         
+        if ($model->load(Yii::$app->request->post())){
             
+            $model->status_jadwal ='ON GO';
             $model->save();
-            $model->status_jadwal = 'ON GOING';
-             foreach ($modeldetail as $key => $modeldetails):
-                $modeldetails->idjadwal = $model->idjadwal;                						                    
-                $modeldetails->save();                    
-			endforeach;
+            
+            
+            // $spk = TblSpk::findOne($model->idspk);
+            // $date1 = $spk->tgl_mulai;
+            // $date2 = $spk->tgl_selesai;
+            
+            
+            // $diff = date_diff($date1,$date2);
+            // $date1=date_create($spk->tgl_mulai);
+            // $date2=date_create($spk->tgl_selesai);
+            // $diff=date_diff($date1,$date2);
 
+            // $diff = $diff->d + 1;
+
+            // for($i = 0; $i < $diff; $i++){
+
+            //     echo $i;
+            // }  
+
+            // $daterange = new DatePeriod($date1, new DateInterval('P1D'), $date2);
+
+            // foreach($daterange as $date){
+            //     echo $date->format("d") . "<br>";
+            // }        
+
+            //  foreach ($modeldetail as $key => $modeldetails):
+            //     $modeldetails->idjadwal = $model->idjadwal;                						                    
+            //     $modeldetails->save();                    
+			// endforeach;
+
+            //return $this->redirect(['view', 'id' => $model->idjadwal]);
+
+
+            // $start = $spk->tgl_mulai;
+            // $end = $spk->tgl_selesai;
+
+            // $num_days = floor((strtotime($end)-strtotime($start))/(60*60*24));
+           
+            // $days = array();
+
+            $detail = TblDetailSpk::find()
+                    ->where(['idspk'=> $model->idspk])
+                    ->All();
+             foreach($detail as $details):
+             $modeldetail = new TblDetailJadwal();
+            //      for ($i=0; $i<$num_days; $i++) 
+            //         if (date('N', strtotime($start . "+ $i days")) < 6)
+            //             $days[date('Y-m-d', strtotime($start . "+ $i days"))]= $i;
+                
+                $modeldetail->idpegawai = $details->idpegawai;
+                $modeldetail->idjadwal = $model->idjadwal;
+
+                $modeldetail->save();
+            endforeach;           
             return $this->redirect(['view', 'id' => $model->idjadwal]);
         } else {
             return $this->render('create', [
-                'model' => $model,
-                'modeldetail' => (empty($modeldetail)) ? [new TblDetailjadwal] : $modeldetail,
+                'model' => $model,                
             ]);
         }
     }

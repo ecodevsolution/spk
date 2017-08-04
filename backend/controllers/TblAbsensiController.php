@@ -8,6 +8,8 @@ use backend\models\TblAbsensiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\TblDetailspk;
+use backend\models\TblSpk;
 
 /**
  * TblAbsensiController implements the CRUD actions for TblAbsensi model.
@@ -104,6 +106,56 @@ class TblAbsensiController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionListAbsensi($id){
+
+        $loop = '';
+
+        $model = TblDetailspk::find()
+                ->JoinWith('userForm')
+                ->where(['idspk'=>$id])
+                ->all();
+        
+        $date = date('Y-m-d');
+        $spk = TblSpk::find()
+                ->where(['idspk'=>$id])
+                ->AndWhere(['<=','tgl_mulai',$date])
+                ->AndWhere(['>=','tgl_selesai',$date])
+                ->count();
+        if($spk > 0){
+            foreach($model as $models):
+                $loop .= '<tr>';
+                $loop .= '<td>'.$models->userForm->username.'</td>';
+                $loop .= '<td>'.$models->userForm->name.'</td>';
+                $loop .= '<td>Oud-Turnhout</td>';
+                $loop .= '<td class="text-primary">$36,738</td>';
+                $loop .= '<td class="text-primary">'.date('Y-m-d').'</td>';
+                $loop .= '<td class="text-primary"><select name="keterangan[]"><option value="1">Masuk</option><option value="2">Tidak Masuk</option><option value="3">Digantikan</option></td>';
+                $loop .= '<tr>';
+            endforeach;
+        }else{
+            $loop='Tidak ada data pegawai masuk';
+        }
+
+        echo '<table class="table">
+                <thead class="text-primary">
+                    <tr>
+                        <th>NIP</th>
+                        <th>Nama</th>
+                        <th>Jam Masuk</th>
+                        <th>Jam Keluar</th>
+                        <th>tanggal</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    '.$loop.'
+                    
+                </tbody>
+            </table>
+            <br/>
+            <hr/><br/>';
     }
 
     /**

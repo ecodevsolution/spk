@@ -80,16 +80,16 @@ class TblSpkController extends Controller
 
              $model->tgl_mulai = date('Y-m-d',strtotime($model->tgl_mulai)); 
              $model->tgl_selesai = date('Y-m-d',strtotime($model->tgl_selesai)); 
-             $model->id = Yii::$app->user->identity->id;
+             $model->idpegawai = Yii::$app->user->identity->id;
              $model->harga_pekerjaan = $price->total_penawaran;
              $model->save(false);
 
              foreach ($modeldetail as $key => $modeldetails):
                 $modeldetails->idspk = $model->idspk;
-                $modeldetails->save(false);
+                $modeldetails->save(false);                
              endforeach;
 
-            return $this->redirect(['view', 'id' => $model->idspk]);
+           return $this->redirect(['view', 'id' => $model->idspk]);
         } else {
             return $this->render('create', [
                 'model' => $model,
