@@ -5,19 +5,20 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "tbl_detailspk".
+ * This is the model class for table "tbl_jadwal".
  *
+ * @property integer $idjadwal
  * @property string $idspk
- * @property string $id
+ * @property string $status_jadwal
  */
-class TblDetailspk extends \yii\db\ActiveRecord
+class TblJadwal extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'tbl_detailspk';
+        return 'tbl_jadwal';
     }
 
     /**
@@ -26,23 +27,20 @@ class TblDetailspk extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idspk', 'ididpegawai'], 'string', 'max' => 8],
+            [['idspk'], 'string', 'max' => 8],
+            [['status_jadwal'], 'string', 'max' => 5],
         ];
     }
 
     /**
      * @inheritdoc
      */
-
-    public function getUserForm()
-    {
-        return $this->hasOne(UserForm::className(), ['id' => 'idpegawai']);
-    }
     public function attributeLabels()
     {
         return [
+            'idjadwal' => 'Idjadwal',
             'idspk' => 'Idspk',
-            'id' => 'Ididpegawai',
+            'status_jadwal' => 'Status Jadwal',
         ];
     }
 }
