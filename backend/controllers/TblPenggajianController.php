@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\TblPenggajian;
 use backend\models\TblPenggajianSearch;
+use backend\models\TblAbsensi;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,12 +36,12 @@ class TblPenggajianController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TblPenggajianSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+       $model = TblAbsensi::find()
+                ->JoinWith('tblSpk')
+                ->All();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'model' => $model            
         ]);
     }
 

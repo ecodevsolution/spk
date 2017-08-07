@@ -25,6 +25,10 @@ class TblAbsensi extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function getTblSpk()
+    {
+        return $this->hasOne(TblSpk::className(), ['idspk' => 'idspk']);
+    }
     public function rules()
     {
         return [

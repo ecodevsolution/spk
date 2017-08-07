@@ -13,23 +13,26 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="tbl-penggajian-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Tbl Penggajian', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'idgaji',
-            'idabsensi',
-            'total_gaji',
-            'tgl_gaji',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+    <table class="table">
+         <thead class="text-primary">
+             <tr>
+                 <th>SPK</th>
+                 <th>Area</th>
+                 <th>Tanggal Mulai</th>
+                 <th>Tanggal Akhir</th>                 
+                 <th>Status</th>
+                 <th>Action</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>SPK</td>
+                 <td>Area</td>
+                 <td>Tanggal Mulai</td>
+                 <td>Tanggal Akhir</td>                 
+                 <td>Status</td>
+                 <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+             </tr>
+         </tbody>
+     </table>
 </div>
