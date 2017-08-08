@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\TblPembayaran;
+use backend\models\TblSpk;
 use backend\models\TblPembayaranSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -64,14 +65,77 @@ class TblPembayaranController extends Controller
     public function actionCreate()
     {
         $model = new TblPembayaran();
+        $noInvoice = mt_rand(10,99);         
+        $noInvoice = date('ymd').''.$noInvoice;             
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())){
+            
+            
+            $model->save();
             return $this->redirect(['view', 'id' => $model->idpembayaran]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'noInvoice'=>$noInvoice,
             ]);
         }
+    }
+
+    public function actionDetail($id){
+        $model = TblSpk::FindOne($id);
+
+        echo "
+                        <fieldset>
+                            <div class='form-group'>
+                                <div class='select'>
+                                    <label class='col-md-2 col-form-label'>Area Pekerjaa</label>
+                                    <div class='col-md-8'>
+                                        <div class='form-group'>
+                                            <input type='text' class='form-control' readonly='true' value='".ucfirst($model->area_pekerjaan)."'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <div class='form-group'>
+                                <div class='select'>
+                                    <label class='col-md-2 col-form-label'>Tanggal Mulai</label>
+                                    <div class='col-md-8'>
+                                         <div class='form-group'>
+                                            <input type='text' class='form-control' readonly='true' value='".date('d M Y',strtotime($model->tgl_mulai))."'>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <div class='form-group'>
+                                <div class='select'>
+                                    <label class='col-md-2 col-form-label'>Tanggal Selesai</label>
+                                    <div class='col-md-8'>
+                                         <div class='form-group'>
+                                            <input type='text' class='form-control' readonly='true' value='".date('d M Y',strtotime($model->tgl_selesai))."'>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class='form-group'>
+                                <div class='select'>
+                                    <label class='col-md-2 col-form-label'>Harga Pekerjaan</label>
+                                    <div class='col-md-8'>
+                                         <div class='form-group'>
+                                            <input type='text' class='form-control'id='total' readonly='true' value='".number_format($model->harga_pekerjaan,0,".",".")."'>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>";
+
     }
 
     /**

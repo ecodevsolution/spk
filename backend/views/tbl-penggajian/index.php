@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use backend\models\TblJadwal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\TblPenggajianSearch */
@@ -25,14 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
              </tr>
          </thead>
          <tbody>
+            <?php
+                foreach($model as $models):
+
+                $jadwal = TblJadwal::find()
+                        ->where(['idspk'=>$models->idspk])
+                        ->One();
+            ?>
              <tr>
-                 <td>SPK</td>
-                 <td>Area</td>
-                 <td>Tanggal Mulai</td>
-                 <td>Tanggal Akhir</td>                 
-                 <td>Status</td>
+                 <td><?= $models->idspk ?></td>
+                 <td><?= $models->tblSpk->area_pekerjaan ?></td>
+                 <td><?= $models->tblSpk->tgl_mulai ?></td>
+                 <td><?= $models->tblSpk->tgl_selesai ?></td>                 
+                 <td><?= $jadwal->status_jadwal; ?></td>
                  <td><a href="#"><i class="fa fa-pencil"></i></a></td>
              </tr>
+             <?php endforeach; ?>
+
          </tbody>
      </table>
 </div>

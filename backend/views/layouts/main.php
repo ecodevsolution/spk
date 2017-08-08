@@ -38,12 +38,12 @@
         <div class="wrapper">
             <div class="sidebar">
                 <div class="logo">
-                    <a href="#" class="simple-text">
+                    <a href="<?= Yii::$app->homeUrl; ?>" class="simple-text">
                     <img src="img/logo.png" alt="Billy" height="42" width="42">
                     </a>
                 </div>
                 <div class="logo logo-mini">
-                    <a href="#" class="simple-text">
+                    <a href="<?= Yii::$app->homeUrl; ?>" class="simple-text">
                     I
                     </a>
                 </div>

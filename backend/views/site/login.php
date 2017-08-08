@@ -17,6 +17,7 @@ $this->title = 'Login';
                                 <div class="card card-login card-hidden">
                                     <div class="header text-center">
                                         <h3 class="title">Login</h3>
+                                        <img src="img/logo.png" alt="Logo" style="width: 50px;height: 50px;">
                                     </div>
                                     <div class="content">
 

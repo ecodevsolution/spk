@@ -124,7 +124,7 @@ class TblAbsensiController extends Controller
     public function actionListAbsensi($id){
 
         $loop = '';
-
+        global $verifikasi;
         $model = TblDetailspk::find()
                 ->JoinWith('userForm')
                 ->where(['idspk'=>$id])
@@ -180,6 +180,7 @@ class TblAbsensiController extends Controller
                     ->count();
             
             $verifikasi = '';
+
             if($absent <= 0){
                 $minute_out ='';
                 $hours_out = '';
@@ -205,7 +206,7 @@ class TblAbsensiController extends Controller
                  $verifikasi .= '</fieldset>';
             }
 
-
+            
              $connection = \Yii::$app->db;
              $sql = $connection->createCommand("SELECT * FROM `user` WHERE id NOT IN (SELECT DISTINCT b.idpegawai FROM tbl_spk a join tbl_detailspk b ON a.idspk = b.idspk WHERE DATE(NOW()) <=  a.tgl_selesai) AND idrole <> 2");
              $modelx = $sql->queryAll();
