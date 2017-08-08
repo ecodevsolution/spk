@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\TblSpkSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tbl Spks';
+$this->title = 'Tbl Spk';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-spk-index">

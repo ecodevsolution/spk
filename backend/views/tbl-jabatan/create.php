@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\TblJabatan */
 
 $this->title = 'Create Tbl Jabatan';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Jabatans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Jabatan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-jabatan-create">

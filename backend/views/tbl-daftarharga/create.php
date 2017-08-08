@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\TblDaftarharga */
 
 $this->title = 'Create Master Harga';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Daftarhargas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Daftarharga', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-daftarharga-create">

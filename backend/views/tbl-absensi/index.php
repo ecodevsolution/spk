@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\TblAbsensiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tbl Absensis';
+$this->title = 'Tbl Absensi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-absensi-index">

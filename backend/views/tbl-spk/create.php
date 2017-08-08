@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\TblSpk */
 
 $this->title = 'Create Tbl Spk';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Spks', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Spk', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-spk-create">

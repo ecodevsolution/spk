@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\TblSpk */
 
 $this->title = $model->idspk;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Spks', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Spk', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-spk-view">

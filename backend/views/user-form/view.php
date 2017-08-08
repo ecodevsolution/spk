@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\UserForm */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'User Forms', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Pegawai', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-form-view">

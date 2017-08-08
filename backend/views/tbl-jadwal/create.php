@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\TblJadwal */
 
 $this->title = 'Create Tbl Jadwal';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Jadwals', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Jadwal', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-jadwal-create">

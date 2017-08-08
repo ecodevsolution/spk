@@ -13,11 +13,14 @@ $this->title = 'Login';
                     <div class="row">
                         <div class="col-lg-4 col-md-6 offset-lg-4 offset-md-3">
 
+                               <p     class="text-center"> <img src="img/logo.png" alt="Logo" style="width: 120px;height: 120px;">
+
                             <?php $form = ActiveForm::begin(['enableClientValidation' => false]); ?>
                                 <div class="card card-login card-hidden">
                                     <div class="header text-center">
+
                                         <h3 class="title">Login</h3>
-                                        <img src="img/logo.png" alt="Logo" style="width: 50px;height: 50px;">
+                                        
                                     </div>
                                     <div class="content">
 

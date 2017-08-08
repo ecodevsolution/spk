@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\TblClient */
 
 $this->title = 'Update Data Client: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Clients', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Client', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

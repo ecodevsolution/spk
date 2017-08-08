@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\TblRole */
 
 $this->title = $model->idrole;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Roles', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Role', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-role-view">

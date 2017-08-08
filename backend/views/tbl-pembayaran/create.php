@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\TblPembayaran */
 
 $this->title = 'Create Tbl Pembayaran';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Pembayarans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Pembayaran', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-pembayaran-create">

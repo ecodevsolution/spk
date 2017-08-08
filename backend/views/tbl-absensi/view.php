@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\TblAbsensi */
 
 $this->title = $model->idabsensi;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Absensis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Absensi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-absensi-view">

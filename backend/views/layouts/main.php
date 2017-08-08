@@ -39,12 +39,12 @@
             <div class="sidebar">
                 <div class="logo">
                     <a href="<?= Yii::$app->homeUrl; ?>" class="simple-text">
-                    <img src="img/logo.png" alt="Billy" height="42" width="42">
+                    <img src="img/logo.png" alt="Billy" height="50" width="50">
                     </a>
                 </div>
                 <div class="logo logo-mini">
                     <a href="<?= Yii::$app->homeUrl; ?>" class="simple-text">
-                    I
+                    WS
                     </a>
                 </div>
                 <div class="sidebar-wrapper">
@@ -97,6 +97,20 @@
                                 </ul>
                             </div>
                         </li>
+                         <li class="d-flex flex-column">
+                            <a data-toggle="collapse" href="#penawaran" class="collapsed nav-link" aria-expanded="false">
+                                <i class="nav-icon ti-gift"></i>
+                                <p>Penawaran
+                                    <i class="fa fa-sort-desc submenu-toggle"></i>
+                                </p>
+                            </a>
+                            <div class="collapse" id="penawaran" role="navigation" aria-expanded="false" style="height: 0px;">
+                                <ul class="nav flex-column">
+                                    <li><a class="nav-link" href="index.php?r=tbl-penawaran/index">Data Penawaran</a></li>
+                                    <li><a class="nav-link" href="index.php?r=tbl-daftarharga/index">Master Daftar Harga</a></li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="d-flex flex-column">
                             <a data-toggle="collapse" href="#pekerjaan" class="collapsed nav-link" aria-expanded="false">
                                 <i class="nav-icon ti-package"></i>
@@ -139,20 +153,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="d-flex flex-column">
-                            <a data-toggle="collapse" href="#penawaran" class="collapsed nav-link" aria-expanded="false">
-                                <i class="nav-icon ti-gift"></i>
-                                <p>Penawaran
-                                    <i class="fa fa-sort-desc submenu-toggle"></i>
-                                </p>
-                            </a>
-                            <div class="collapse" id="penawaran" role="navigation" aria-expanded="false" style="height: 0px;">
-                                <ul class="nav flex-column">
-                                    <li><a class="nav-link" href="index.php?r=tbl-penawaran/index">Data Penawaran</a></li>
-                                    <li><a class="nav-link" href="index.php?r=tbl-daftarharga/index">Master Daftar Harga</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>
@@ -173,32 +174,14 @@
                         <ul class="nav navbar-nav ml-auto">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle nav-link" id="notificationList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ti-bell nav-icon"></i>
-                                    <span class="notification">6</span>
-                                    <p class="hidden-lg-up">
-                                        Notifications
-                                        <i class="fa fa-sort-desc submenu-toggle"></i>
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="notificationList">
-                                    <a class="dropdown-item" href="#">You have 5 new messages</a>
-                                    <a class="dropdown-item" href="#">You're now friend with Mike</a>
-                                    <a class="dropdown-item" href="#">Wish Mary on her birthday!</a>
-                                    <a class="dropdown-item" href="#">5 warnings in Server Console</a>
-                                    <a class="dropdown-item" href="#">Jane completed 'Induction Training'</a>
-                                    <a class="dropdown-item" href="#">'Prepare Marketing Report' is overdue</a>
-                                </div>
+                                   
                             </li>
                             <li>
-                                <a href="#pablo" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <i class="ti-layout-grid3-alt nav-icon"></i>
-                                    <p class="hidden-lg-up">Apps</p>
+                                
                                 </a>
                             </li>
                             <li>
-                                <a href="#pablo" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <i class="ti-user nav-icon"></i>
-                                    <p class="hidden-lg-up">Profile</p>
+                                
                                 </a>
                             </li>
                             <li>

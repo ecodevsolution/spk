@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\TblRequest */
 
 $this->title = 'Create Form Request';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Requests', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Request', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-request-create">

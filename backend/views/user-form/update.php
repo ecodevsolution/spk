@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\UserForm */
 
 $this->title = 'Update Data Pegawai: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'User Forms', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Pegawai', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

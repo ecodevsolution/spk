@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\TblRole */
 
 $this->title = 'Create Tbl Role';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Roles', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Role', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-role-create">

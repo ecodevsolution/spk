@@ -7,12 +7,12 @@ use yii\helpers\Html;
 /* @var $model backend\models\TblAbsensi */
 
 $this->title = 'Create Tbl Absensi';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Absensis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Absensi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-absensi-create">
 
-    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
+    <h2><?= Html::encode($this->title) ?></h2>
 
     <?= $this->render('_form', [
         'model' => $model,

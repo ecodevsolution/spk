@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\TblClient */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Clients', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tbl Client', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-client-view">
