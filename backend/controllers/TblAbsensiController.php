@@ -213,8 +213,9 @@ class TblAbsensiController extends Controller
 
              $pengganti = '';
              $pengganti .= '<select name="sub[]">';
+             $pengganti .= '<option value="">- Choose -</option>';
              foreach($modelx as $modelxs):
-                $pengganti .= '<option value='.$modelxs['idpegawai'].'>'.$modelxs['username'].'-'.$modelxs['name'].'</option>';
+                $pengganti .= '<option value='.$modelxs['id'].'>'.$modelxs['username'].'-'.$modelxs['name'].'</option>';
              endforeach;
              $pengganti .= '</select>';
 
