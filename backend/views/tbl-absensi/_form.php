@@ -36,22 +36,7 @@
                             </div>
                         </fieldset>
                         <div id="list-absensi"></div>
-                        <fieldset>
-                            <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Verivikasi 1</label>
-                                <div class="col-md-8">                                                
-                                    <?= $form->field($model, 'verifikasi_1')->textInput(['maxlength' => true,'class'=>'form-control'])->label(false); ?>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Verifikasi 2</label>
-                                <div class="col-md-8">                                                
-                                    <?= $form->field($model, 'verifikasi_2')->textInput(['maxlength' => true,'class'=>'form-control'])->label(false); ?>
-                                </div>
-                            </div>
-                        </fieldset>
+                        
                         <div class="form-group">
                             <div class="col-md-3">
                                 <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
