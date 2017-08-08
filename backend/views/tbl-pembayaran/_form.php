@@ -31,6 +31,8 @@
             document.getElementById("demo").innerHTML = "Pembayaran Melebihi Total Biaya";
         }else if(bayar < total){
             document.getElementById("demo").innerHTML = "Pembayaran Kurang dari Total Biaya";
+        }else{
+            return true;
         }
         return false;
     }

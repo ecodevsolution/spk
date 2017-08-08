@@ -129,7 +129,8 @@ class TblPembayaranController extends Controller
                                     <label class='col-md-2 col-form-label'>Harga Pekerjaan</label>
                                     <div class='col-md-8'>
                                          <div class='form-group'>
-                                            <input type='text' class='form-control'id='total' readonly='true' value='".number_format($model->harga_pekerjaan,0,".",".")."'>
+                                            <input type='text' class='form-control' readonly='true' value='".number_format($model->harga_pekerjaan,0,".",".")."'>
+                                            <input type='hidden' class='form-control'id='total' readonly='true' value='".$model->harga_pekerjaan."'>
                                          </div>
                                     </div>
                                 </div>
