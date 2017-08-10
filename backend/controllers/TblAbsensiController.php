@@ -9,7 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\TblDetailspk;
-use backend\models\TblSpk;
+use backend\models\TblSpk;  
+use backend\models\TblDetailabsensi;  
 
 
 /**
@@ -67,17 +68,53 @@ class TblAbsensiController extends Controller
     public function actionCreate()
     {
         $model = new TblAbsensi();
-
+        
+        
         if (isset($_POST['spk'])){
             
              $absent = TblAbsensi::find()
                     ->where(['idspk'=>$_POST['spk']])
-                    ->count();
-            if($absent <= 0){                
-                //var_dump($_POST['spk']);
-                foreach($_POST['hours_in'] as $key => $hours_ins):
-                    //$time_in = $hours_ins[$key];
-                    var_dump($hours_ins);
+                    ->Andwhere(['verifikasi_2'=>NULL])
+                    ->count();            
+            if($absent == 0){
+
+                $model->verifikasi_1 = $_POST['verifikasi1'];
+                $model->idspk = $_POST['spk'];
+                $model->save(false);
+
+                foreach($_POST['hours_in'] as $key => $hours):                    
+                    $details = new TblDetailAbsensi();
+                    $details->idabsensi = $model->idabsensi;              
+                    $details->idpegawai = $_POST['name'][$key];
+                    $details->tanggal = date('Y-m-d');
+                    $details->jam_masuk = $_POST['hours_in'][$key].':'.$_POST['minute_in'][$key];
+                    $details->pengganti = $_POST['sub'][$key];
+                    $details->save(false);
+                endforeach;
+            }else{
+
+                $updateAbsent = TblAbsensi::find()
+                                ->Where(['idspk'=>$_POST['spk']])
+                                ->AndWhere(['verifikasi_2'=>NULL])
+                                ->One();             
+                $updateAbsent->verifikasi_2 = $_POST['verifikasi2'];
+                $updateAbsent->idspk = $_POST['spk'];
+
+                //$updateAbsent->save(false);
+
+                foreach($_POST['hours_out'] as $key => $hours):                    
+                    $details = TblDetailAbsensi::find()
+                               ->Where(['idabsensi'=>$updateAbsent->idabsensi])
+                               ->AndWhere(['tanggal'=>date('Y-m-d')])
+                               ->One();
+                    var_dump(details);
+                    $details->idabsensi = $model->idabsensi;              
+                    $details->idpegawai = $_POST['name'][$key];
+                    $details->tanggal = date('Y-m-d');
+                    $details->jam_masuk = $_POST['hours_out'][$key].':'.$_POST['minute_out'][$key];
+                    $details->pengganti = $_POST['sub'][$key];
+
+                    $details->save(false);
                 endforeach;
             }
             //$model->save();
@@ -87,6 +124,12 @@ class TblAbsensiController extends Controller
                 'model' => $model,
             ]);
         }
+
+
+       
+            //$model->save();
+            //return $this->redirect(['view', 'id' => $model->idabsensi]);
+       
     }
 
     /**
@@ -189,13 +232,14 @@ class TblAbsensiController extends Controller
                     $verifikasi .= '<div class="form-group row">';
                         $verifikasi .= '<label class="col-md-2 col-form-label">Verifikasi 1</label>';
                         $verifikasi .= '<div class="col-md-8">';
-                             $verifikasi .= '<input type="text" class="form-control" name="verifikasi1" >';
+                             $verifikasi .= '<input type="text" required class="form-control" name="verifikasi1" >';
                         $verifikasi .= '</div>';
                     $verifikasi .= '</div>';
                  $verifikasi .= '</fieldset>';
                
             }else{
-
+                $minute_in ='';
+                $hours_in = '';
                 $verifikasi .= '<fieldset>';
                     $verifikasi .= '<div class="form-group row">';
                         $verifikasi .= '<label class="col-md-2 col-form-label">Verifikasi 2</label>';
@@ -222,7 +266,7 @@ class TblAbsensiController extends Controller
             foreach($model as $models):
                 $loop .= '<tr>';
                 $loop .= '<td>'.$models->userForm->username.'</td>';
-                $loop .= '<td>'.$models->userForm->name.'</td>';
+                $loop .= '<td>'.$models->userForm->name.'<input type="hidden" name="name[]" value='.$models->userForm->id.'></td>';
                 $loop .= '<td>'.$hours_in.' '.$minute_in.'</td>';
                 $loop .= '<td class="text-primary">'.$hours_out.' '.$minute_out.'</td>';
                 $loop .= '<td class="text-primary">'.date('d M Y').'</td>';

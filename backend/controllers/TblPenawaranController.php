@@ -41,21 +41,21 @@ class TblPenawaranController extends Controller
     public function actionDetailPenawaran($id){
 
         $model = TblRequest::find()
-                ->JoinWith('tblClient')
+                ->JoinWith('userForm')
                 ->where(['idrequest'=>$id])
                 ->One();
 
 
         echo "
-                        <fieldset>
-                            <div class='form-group'>
-                                <div class='select'>
-                                    <label class='col-md-2 col-form-label'>Nama Client</label>
-                                    <div class='col-md-8'>
-                                            <input type='text' class='form-control' readonly='true' value='".ucfirst($model->tblClient->name)."'>
+                        <fieldset>                            
+                            <div class='select'>
+                                <label class='col-md-2 col-form-label'>Nama Client</label>
+                                <div class='col-md-8'>
+                                    <div class='form-group'>
+                                            <input type='text' class='form-control' readonly='true' value='".ucfirst($model->userForm->name)."'>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                            
                         </fieldset>";
 
     }
