@@ -100,18 +100,16 @@ class TblAbsensiController extends Controller
                 $updateAbsent->verifikasi_2 = $_POST['verifikasi2'];
                 $updateAbsent->idspk = $_POST['spk'];
 
-                //$updateAbsent->save(false);
+                $updateAbsent->save(false);
 
                 foreach($_POST['hours_out'] as $key => $hours):                    
                     $details = TblDetailAbsensi::find()
                                ->Where(['idabsensi'=>$updateAbsent->idabsensi])
+                               ->AndWhere(['idpegawai'=>$_POST['name'][$key]])
                                ->AndWhere(['tanggal'=>date('Y-m-d')])
                                ->One();
-                    var_dump(details);
-                    $details->idabsensi = $model->idabsensi;              
-                    $details->idpegawai = $_POST['name'][$key];
-                    $details->tanggal = date('Y-m-d');
-                    $details->jam_masuk = $_POST['hours_out'][$key].':'.$_POST['minute_out'][$key];
+
+                    $details->jam_keluar = $_POST['hours_out'][$key].':'.$_POST['minute_out'][$key];
                     $details->pengganti = $_POST['sub'][$key];
 
                     $details->save(false);
@@ -128,7 +126,7 @@ class TblAbsensiController extends Controller
 
        
             //$model->save();
-            //return $this->redirect(['view', 'id' => $model->idabsensi]);
+            return $this->redirect(['index']);
        
     }
 
@@ -179,8 +177,10 @@ class TblAbsensiController extends Controller
                 ->AndWhere(['<=','tgl_mulai',$date])
                 ->AndWhere(['>=','tgl_selesai',$date])
                 ->count();
-        if($spk > 0){
 
+        
+        if($spk > 0){           
+                    
             $hours_in = '';
             $hours_in .= '<select name="hours_in[]">';
             for($i = 1 ; $i <= 24; $i++){
@@ -220,6 +220,7 @@ class TblAbsensiController extends Controller
 
             $absent = TblAbsensi::find()
                     ->where(['idspk'=>$id])
+                     ->Andwhere(['verifikasi_2'=>NULL])
                     ->count();
             
             $verifikasi = '';
@@ -244,7 +245,7 @@ class TblAbsensiController extends Controller
                     $verifikasi .= '<div class="form-group row">';
                         $verifikasi .= '<label class="col-md-2 col-form-label">Verifikasi 2</label>';
                         $verifikasi .= '<div class="col-md-8">';
-                             $verifikasi .= '<input type="text" class="form-control" name="verifikasi2" >';
+                             $verifikasi .= '<input type="text" required class="form-control" name="verifikasi2" >';
                         $verifikasi .= '</div>';
                     $verifikasi .= '</div>';
                  $verifikasi .= '</fieldset>';
@@ -269,8 +270,7 @@ class TblAbsensiController extends Controller
                 $loop .= '<td>'.$models->userForm->name.'<input type="hidden" name="name[]" value='.$models->userForm->id.'></td>';
                 $loop .= '<td>'.$hours_in.' '.$minute_in.'</td>';
                 $loop .= '<td class="text-primary">'.$hours_out.' '.$minute_out.'</td>';
-                $loop .= '<td class="text-primary">'.date('d M Y').'</td>';
-                $loop .= '<td class="text-primary"><select name="keterangan[]"><option value="1">Masuk</option><option value="2">Tidak Masuk</option><option value="3">Digantikan</option></td>';
+                $loop .= '<td class="text-primary">'.date('d M Y').'</td>';                
                 $loop .= '<td class="text-primary">'.$pengganti.'</td>';
                 $loop .= '<tr>';
             endforeach;
@@ -285,8 +285,7 @@ class TblAbsensiController extends Controller
                         <th>Nama</th>
                         <th>Jam Masuk</th>
                         <th>Jam Keluar</th>
-                        <th>tanggal</th>
-                        <th>Keterangan</th>
+                        <th>tanggal</th>                        
                         <th>Pengganti</th>
                     </tr>
                 </thead>
