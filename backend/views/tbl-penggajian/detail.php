@@ -14,6 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="tbl-penggajian-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+     <?php
+         $connection = \Yii::$app->db;
+         $sqlzz = $connection->createCommand("SELECT  COUNT(username) * c.gaji Gaji FROM tbl_absensi e JOIN tbl_detailabsensi a ON e.idabsensi = a.idabsensi JOIN `user` b ON a.idpegawai = b.id JOIN tbl_jabatan c ON b.idjabatan = c.idjabatan WHERE e.idspk = '".$model->idspk."'");
+         $modelzz = $sqlzz->queryOne();
+    
+    ?>
     <table class="table">
          <thead class="text-primary">
              <tr>                 
@@ -21,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  <th>Area</th>
                  <th>Tanggal Mulai</th>
                  <th>Tanggal Akhir</th>                                  
+                 <th>Total Penggajian</th>                                  
              </tr>
          </thead>
          <tbody>                
@@ -29,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $model->tblSpk->area_pekerjaan; ?></td>
                 <td><?= $model->tblSpk->tgl_mulai; ?></td>
                 <td><?= $model->tblSpk->tgl_selesai; ?></td>
+                <td><?= number_format($modelzz['Gaji'],0,".",".")?></td>
              </tr>              
          </tbody>
      </table>
@@ -40,13 +48,13 @@ $this->params['breadcrumbs'][] = $this->title;
                  <th>ID Pegawai</th>
                  <th>Nama</th>
                  <th>Jabatan</th>
-                 <th>Tanggal</th>                                  
+                 <th>Gaji</th>                                  
              </tr>
          </thead>
          <tbody>     
             <?php
                  $connection = \Yii::$app->db;
-                 $sql = $connection->createCommand("SELECT  username, name, nama_jabatan, tanggal FROM tbl_absensi e JOIN tbl_detailabsensi a ON e.idabsensi = a.idabsensi JOIN `user` b ON a.idpegawai = b.id JOIN tbl_jabatan c ON b.idjabatan = c.idjabatan WHERE e.idspk = '".$model->idspk."' AND pengganti = ''");
+                 $sql = $connection->createCommand("SELECT  username, name, nama_jabatan, COUNT(username) * c.gaji Gaji FROM tbl_absensi e JOIN tbl_detailabsensi a ON e.idabsensi = a.idabsensi JOIN `user` b ON a.idpegawai = b.id JOIN tbl_jabatan c ON b.idjabatan = c.idjabatan WHERE e.idspk = '".$model->idspk."' AND pengganti = '' GROUP BY username, name, nama_jabatan");
                  $modelx = $sql->queryAll();
 
                  foreach($modelx as $models):
@@ -56,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $models['username']; ?></td>
                 <td><?= $models['name']; ?></td>
                 <td><?= $models['nama_jabatan']; ?></td>
-                <td><?= $models['tanggal']; ?></td>                
+                <td><?= number_format($models['Gaji'],0,".","."); ?></td>                
              </tr>  
 
              <?php endforeach; ?>            
@@ -69,13 +77,13 @@ $this->params['breadcrumbs'][] = $this->title;
                  <th>ID Pegawai</th>
                  <th>Nama</th>
                  <th>Jabatan</th>
-                 <th>Tanggal</th>                                  
+                 <th>Gaji</th>                                  
              </tr>
          </thead>
          <tbody>     
             <?php
                  $connection = \Yii::$app->db;
-                 $sql = $connection->createCommand("SELECT * FROM tbl_absensi o JOIN tbl_detailabsensi p ON o.idabsensi = p.idabsensi JOIN `user` q ON p.pengganti = q.id JOIN tbl_jabatan r ON q.idjabatan = r.idjabatan WHERE o.idspk = '".$model->idspk."' ");
+                 $sql = $connection->createCommand("SELECT IFNULL(username,'') username, IFNULL(name,'') name, IFNULL(nama_jabatan,'') nama_jabatan, IFNULL(COUNT(username) * r.gaji,0) Gaji FROM tbl_absensi o JOIN tbl_detailabsensi p ON o.idabsensi = p.idabsensi JOIN `user` q ON p.pengganti = q.id JOIN tbl_jabatan r ON q.idjabatan = r.idjabatan WHERE o.idspk = '".$model->idspk."'");
                  $modelx = $sql->queryAll();
 
                  foreach($modelx as $models):
@@ -85,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $models['username']; ?></td>
                 <td><?= $models['name']; ?></td>
                 <td><?= $models['nama_jabatan']; ?></td>
-                <td><?= $models['tanggal']; ?></td>                
+                <td><?= number_format($models['Gaji'],0,".","."); ?></td>                
              </tr>  
 
              <?php endforeach; ?>            
