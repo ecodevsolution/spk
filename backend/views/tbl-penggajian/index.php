@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  <td><?= $models->tblSpk->tgl_mulai ?></td>
                  <td><?= $models->tblSpk->tgl_selesai ?></td>                 
                  <td><?= $jadwal->status_jadwal; ?></td>
-                 <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                 <td><a href="?r=index"><i class="fa fa-pencil"></i></a></td>
              </tr>
              <?php endforeach; ?>
 

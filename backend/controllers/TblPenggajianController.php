@@ -38,6 +38,7 @@ class TblPenggajianController extends Controller
     {
        $model = TblAbsensi::find()
                 ->JoinWith('tblSpk')
+                ->groupBy('idspk')
                 ->All();
 
         return $this->render('index', [

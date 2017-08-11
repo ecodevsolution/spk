@@ -29,7 +29,7 @@ class TblDaftarharga extends \yii\db\ActiveRecord
     {
         return [
             [['harga_pekerjaan'], 'number'],
-            [['item_pekerjaan'], 'string', 'max' => 20],
+            [['item_pekerjaan'], 'string', 'max' => 50],
             [['satuan'], 'string', 'max' => 3],
         ];
     }
