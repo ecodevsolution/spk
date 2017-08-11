@@ -15,8 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
+    <p style="display:inline">
         <?= Html::a('Create Data Pegawai', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    <p style="float:right">
+        <?= Html::a('', ['cetak'], ['class' => 'fa fa-file-pdf-o fa-2x']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
