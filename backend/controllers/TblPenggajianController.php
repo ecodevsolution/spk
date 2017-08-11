@@ -58,6 +58,17 @@ class TblPenggajianController extends Controller
         ]);
     }
 
+    public function actionDetail($id){
+        $model = TblAbsensi::find()
+                ->joinWith('tblSpk')                
+                ->where(['tbl_spk.idspk'=>$id])
+                ->One();
+
+         return $this->render('detail',[
+             'model'=>$model
+         ]);        
+    }
+
     /**
      * Creates a new TblPenggajian model.
      * If creation is successful, the browser will be redirected to the 'view' page.
