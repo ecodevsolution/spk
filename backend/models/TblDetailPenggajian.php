@@ -7,8 +7,9 @@ use Yii;
 /**
  * This is the model class for table "tbl_detail_penggajian".
  *
- * @property string $idgaji
- * @property string $idpegawai
+ * @property integer $idgaji
+ * @property integer $idpegawai
+ * @property double $total_gaji
  */
 class TblDetailPenggajian extends \yii\db\ActiveRecord
 {
@@ -26,7 +27,9 @@ class TblDetailPenggajian extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idgaji', 'idpegawai'], 'string', 'max' => 8],
+            [['idgaji', 'idpegawai'], 'required'],
+            [['idgaji', 'idpegawai'], 'integer'],
+            [['total_gaji'], 'number'],
         ];
     }
 
@@ -38,6 +41,7 @@ class TblDetailPenggajian extends \yii\db\ActiveRecord
         return [
             'idgaji' => 'Idgaji',
             'idpegawai' => 'Idpegawai',
+            'total_gaji' => 'Total Gaji',
         ];
     }
 }
