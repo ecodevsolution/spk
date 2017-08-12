@@ -12,6 +12,7 @@ use backend\models\Model;
 use backend\models\TblDetailpenawaran;
 use backend\models\TblRequest;
 use backend\models\TblDaftarharga;
+use mPdf;
 
 /**
  * TblPenawaranController implements the CRUD actions for TblPenawaran model.
@@ -80,6 +81,240 @@ class TblPenawaranController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+     public function actionCetak($id){
+    
+        $mpdf = new \Mpdf\Mpdf();        
+        $content = '';
+        $connection = \Yii::$app->db;
+        $sql = $connection->createCommand("SELECT item_pekerjaan,satuan,satuan_harga,  satuan_harga * quantity total FROM tbl_detailpenawaran a JOIN tbl_daftarharga b ON a.kode_pekerjaan = b.kode_pekerjaan WHERE idpenawaran = ".$id." ");
+        $model = $sql->queryAll();
+        
+        $master = TblPenawaran::find()
+                ->joinWith('tblRequest')
+                ->Where(['idpenawaran'=>$id])
+                ->One();
+
+        foreach($model as $i =>$models):
+        $i = $i+1;
+        $content .= ' <tr>
+                         <td class="service">'.$i.'</td>
+                         <td class="desc">'.$models['item_pekerjaan'].'</td>
+                         <td>'.$models['satuan'].'</td>
+                         <td>'.number_format($models['satuan_harga'],0,".",".").'</td>
+                         <td>'.number_format($models['total'],0,".",".").'</td>                         
+                     </tr>';
+        endforeach;
+
+     $mpdf->WriteHTML('
+			<!DOCTYPE html>
+				<html lang="en">
+					<head>
+						<style>
+							.clearfix:after {
+								content: "";
+								display: table;
+								clear: both;
+							}
+								
+								a {
+								color: #5D6975;
+								text-decoration: underline;
+							}
+								
+								body {
+								position: relative;
+								width: 21cm;  
+								height: 29.7cm; 
+								margin: 0 auto; 
+								color: #001028;
+								background: #FFFFFF; 
+								font-family: Arial, sans-serif; 
+								font-size: 12px; 
+								font-family: Arial;
+							}
+								
+								header {
+								padding: 10px 0;
+								margin-bottom: 30px;
+							}
+								
+								#logo {
+								text-align: center;
+								margin-bottom: 10px;
+							}
+								
+								#logo img {
+								width: 90px;
+							}
+								
+								h1 {								
+								color: blue;
+								font-size: 2.4em;
+								line-height: 1.4em;
+								font-weight: normal;
+								text-align: center;
+								margin: 0 0 20px 0;
+								background: url(dimension.png);
+							}
+                            .alamat{
+                                color:#000;
+                                text-align:center;
+                                font-size:8px;
+                                padding-top:-15px;
+
+                            }
+								
+								#project {
+								float: left;
+							}
+
+                            #judul{
+                                text-align:center;
+                                font-size:14px;
+                                font-weight:4px;
+                                border-bottom:1px #000 solid;
+                            }
+								
+								#project span {
+								color: #5D6975;
+								text-align: right;
+								width: 52px;
+								margin-right: 10px;
+								display: inline-block;
+								font-size: 0.8em;
+							}
+								
+								#company {
+								float: right;
+								text-align: right;
+							}
+								
+								#project div,
+								#company div {
+								white-space: nowrap;        
+							}
+								
+								table {
+								width: 100%;
+								border-collapse: collapse;
+								border-spacing: 0;
+								margin-bottom: 20px;
+							}
+								
+								table tr:nth-child(2n-1) td {
+								background: #F5F5F5;
+							}
+								
+								table th,
+								table td {
+								text-align: center;
+							}
+								
+								table th {
+								padding: 5px 20px;
+								color: #5D6975;
+								border-bottom: 1px solid #C1CED9;
+								white-space: nowrap;        
+								font-weight: normal;
+							}
+								
+								table .service,
+								table .desc {
+								text-align: left;
+							}
+								
+								table td {
+								padding: 20px;
+								text-align: right;
+							}
+								
+								table td.service,
+								table td.desc {
+								vertical-align: top;
+							}
+								
+								table td.unit,
+								table td.qty,
+								table td.total {
+								font-size: 1.2em;
+							}
+								
+								table td.grand {
+								border-top: 1px solid #5D6975;;
+							}
+								
+								#notices .notice {
+								color: #5D6975;
+								font-size: 1.2em;
+							}
+								
+								footer {
+								color: #5D6975;
+								width: 100%;
+								height: 30px;
+								position: absolute;
+								bottom: 0;
+								border-top: 1px solid #C1CED9;
+								padding: 8px 0;
+								text-align: center;
+							}
+						</style>
+						<meta charset="utf-8">
+						<title>Data Pegawai</title>
+					</head>
+					<body>
+						<header class="clearfix">
+                            <img src="img/logo.png" style="width:80px;display:inline;margin-left:150px">
+                            <h1 style="padding-top:-80px;margin-left:50px">  PT. Wimpie Setiono</h1>
+                            <div class="alamat" style="margin-left:50px">
+                                General Contractor, Maintenance, & Supplier<br/>
+                                Jl. Raya Kranggan No. 57A, Kranggan - Bekasi<br/>
+                                Telp/Fax 021-84300223/84309711<br/>
+                                Email: ptwimpiesetiono@gmail.com
+
+                            </div>
+						    <hr/>
+                            
+                            <p style="text-align:center;font-size:14px;"><b>Penawaran</b></p>
+                            <div id="project">
+                            
+                                <p></p>
+                                <div><span>TANGGAL : '.date('d M Y').'</span> </div>
+                                <div><span>DICETAK OLEH : '.Yii::$app->user->identity->name.'</span> </div>	
+
+                                <p></p>						
+                                <p></p>						
+                                <div><span>ID PENAWARAN : '.$master->idpenawaran.'</span> </div>							
+                                <div><span>NAMA PEKERJAAN : '.$master->tblRequest->nama_pekerjaan.'</span> </div>							
+        
+                            </div>
+						</header>
+						<main>
+						<table>
+							<thead>
+                                <tr>
+                                    <th class="service">No</th>
+                                    <th class="desc">Item Pekerjaan</th>
+                                    <th>Volume</th>
+                                    <th>Satuan Harga</th>
+                                    <th>Total</th>                                   
+                                </tr>
+							</thead>
+							<tbody>
+                               '.$content.'
+							
+							</tbody>
+						</table>
+					
+						</main>
+						
+					</body>
+				</html>
+		');
+        $mpdf->Output();
+        exit;
     }
 
     /**

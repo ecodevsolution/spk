@@ -23,8 +23,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'idspk',                        
+            
+             [
+				'attribute' =>  'idspk',
+				'format' => 'raw',
+				'value' => function ($model) {		 
+					return  '<a href="?r=tbl-spk/cetak&id='.$model->idspk.'">'.$model->idspk.'</a>';
+				
+				},
+			],                       
             'area_pekerjaan',
             'tgl_mulai',
             'tgl_selesai',

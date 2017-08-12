@@ -23,8 +23,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'idpenawaran',
+        
+            [
+				'attribute' =>  'idpenawaran',
+				'format' => 'raw',
+				'value' => function ($model) {		 
+					return  '<a href="?r=tbl-penawaran/cetak&id='.$model->idpenawaran.'">'.$model->idpenawaran.'</a>';
+				
+				},
+			],	
              [
 				'attribute'=>'request',
 				'value'=>'tblRequest.nama_pekerjaan',
