@@ -86,127 +86,237 @@ class UserFormController extends Controller
         }
     }
     public function actionCetak(){
-      //  $mpdf=new mPDF('utf-8');
-        $mpdf = new \Mpdf\Mpdf();
+    
+        $mpdf = new \Mpdf\Mpdf();        
+        $content = '';
+        $connection = \Yii::$app->db;
+        $sql = $connection->createCommand("SELECT * FROM `user` a JOIN tbl_jabatan b ON a.idjabatan = b.idjabatan WHERE a.idrole = 1");
+        $model = $sql->queryAll();
         
-        $mpdf->WriteHTML(' <html xmlns="http://www.w3.org/1999/xhtml" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-            <head>
-                <meta name="viewport" content="width=device-width" />
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                <title>Billing e.g. invoices and receipts</title>
-                <style type="text/css">
-                    img {
-                    max-width: 100%;
-                    }
-                    body {
-                    -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6em;
-                    }
-                    body {
-                    background-color: #f6f6f6;
-                    }
-                    @media only screen and (max-width: 640px) {
-                    body {
-                    padding: 0 !important;
-                    }
-                    h1 {
-                    font-weight: 800 !important; margin: 20px 0 5px !important;
-                    }
-                    h2 {
-                    font-weight: 800 !important; margin: 20px 0 5px !important;
-                    }
-                    h3 {
-                    font-weight: 800 !important; margin: 20px 0 5px !important;
-                    }
-                    h4 {
-                    font-weight: 800 !important; margin: 20px 0 5px !important;
-                    }
-                    h1 {
-                    font-size: 22px !important;
-                    }
-                    h2 {
-                    font-size: 18px !important;
-                    }
-                    h3 {
-                    font-size: 16px !important;
-                    }
-                    .container {
-                    padding: 0 !important; width: 100% !important;
-                    }
-                    .content {
-                    padding: 0 !important;
-                    }
-                    .content-wrap {
-                    padding: 10px !important;
-                    }
-                    .invoice {
-                    width: 100% !important;
-                    }
-                    }
-                </style>
-            </head>
-            <body itemscope itemtype="http://schema.org/EmailMessage" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6em; background-color: #f6f6f6; margin: 0;" bgcolor="#f6f6f6">
-                <table class="body-wrap" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; background-color: #f6f6f6; margin: 0;" bgcolor="#f6f6f6">
-                    <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                        <td style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0;" valign="top"></td>
-                        <td class="container" width="600" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto;" valign="top">
-                            <div class="content" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;">
-                                <table class="main" width="100%" cellpadding="0" cellspacing="0" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; background-color: #fff; margin: 0; border: 1px solid #e9e9e9;" bgcolor="#fff">
-                                    <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                        <td class="content-wrap aligncenter" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 20px;" align="center" valign="top">
-                                            <table width="100%" cellpadding="0" cellspacing="0" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                    <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">                                                    
-                                                    </td>
-                                                </tr>
-                                                <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                    <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                                        <h2 class="aligncenter" style="font-family: Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;" align="center">Beebow Kids Fashion</h2>
-                                                    </td>
-                                                </tr>
-                                                <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                    <td class="content-block aligncenter" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">
-                                                        <table class="invoice" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; text-align: left; width: 80%; margin: 40px auto;">
-                                                            <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                                <td style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 5px 0;" valign="top"><br style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" />Invoice #123<br style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" />Date</td>
-                                                            </tr>
-                                                            <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                                <td style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 5px 0;" valign="top">
-                                                                    <table class="invoice-items" cellpadding="0" cellspacing="0" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; margin: 0;">                                                                       
-                                                                       
-                                                                        <tr class="total" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                                            <td class="alignright" colspan="3" width="80%" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; border-top-width: 2px; border-top-color: #333; border-top-style: solid; border-bottom-color: #333; border-bottom-width: 2px; border-bottom-style: solid; font-weight: 700; margin: 0; padding: 5px 0;" align="right" valign="top">Total</td>
-                                                                            <td class="alignright" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; border-top-width: 2px; border-top-color: #333; border-top-style: solid; border-bottom-color: #333; border-bottom-width: 2px; border-bottom-style: solid; font-weight: 700; margin: 0; padding: 5px 0;" align="right" valign="top">date</td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                    <td class="content-block aligncenter" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">                                                
-                                                    </td>
-                                                </tr>
-                                                <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                    <td class="content-block aligncenter" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">
-                                                    <br/> THANK YOU
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            
+        foreach($model as $i =>$models):
+        $i = $i+1;
+        $content .= ' <tr>
+                         <td class="service">'.$i.'</td>
+                         <td class="desc">'.$models['name'].'</td>
+                         <td>'.$models['nama_jabatan'].'</td>
+                         <td>'.$models['no_ktp'].'</td>
+                         <td>'.$models['alamat_ktp'].'</td>
+                         <td>'.$models['alamat'].'</td>
+                         <td>'.$models['tgl_lahir'].'</td>
+                         <td>'.$models['jenis_kelamin'].'</td>
+                         <td>'.$models['agama'].'</td>
+                         <td>'.$models['no_telp'].'</td>
+                         <td>'.$models['email'].'</td>
+                     </tr>';
+        endforeach;
+
+     $mpdf->WriteHTML('
+			<!DOCTYPE html>
+				<html lang="en">
+					<head>
+						<style>
+							.clearfix:after {
+								content: "";
+								display: table;
+								clear: both;
+							}
+								
+								a {
+								color: #5D6975;
+								text-decoration: underline;
+							}
+								
+								body {
+								position: relative;
+								width: 21cm;  
+								height: 29.7cm; 
+								margin: 0 auto; 
+								color: #001028;
+								background: #FFFFFF; 
+								font-family: Arial, sans-serif; 
+								font-size: 12px; 
+								font-family: Arial;
+							}
+								
+								header {
+								padding: 10px 0;
+								margin-bottom: 30px;
+							}
+								
+								#logo {
+								text-align: center;
+								margin-bottom: 10px;
+							}
+								
+								#logo img {
+								width: 90px;
+							}
+								
+								h1 {								
+								color: blue;
+								font-size: 2.4em;
+								line-height: 1.4em;
+								font-weight: normal;
+								text-align: center;
+								margin: 0 0 20px 0;
+								background: url(dimension.png);
+							}
+                            .alamat{
+                                color:#000;
+                                text-align:center;
+                                font-size:8px;
+                                padding-top:-15px;
+
+                            }
+								
+								#project {
+								float: left;
+							}
+
+                            #judul{
+                                text-align:center;
+                                font-size:14px;
+                                font-weight:4px;
+                                border-bottom:1px #000 solid;
+                            }
+								
+								#project span {
+								color: #5D6975;
+								text-align: right;
+								width: 52px;
+								margin-right: 10px;
+								display: inline-block;
+								font-size: 0.8em;
+							}
+								
+								#company {
+								float: right;
+								text-align: right;
+							}
+								
+								#project div,
+								#company div {
+								white-space: nowrap;        
+							}
+								
+								table {
+								width: 100%;
+								border-collapse: collapse;
+								border-spacing: 0;
+								margin-bottom: 20px;
+							}
+								
+								table tr:nth-child(2n-1) td {
+								background: #F5F5F5;
+							}
+								
+								table th,
+								table td {
+								text-align: center;
+							}
+								
+								table th {
+								padding: 5px 20px;
+								color: #5D6975;
+								border-bottom: 1px solid #C1CED9;
+								white-space: nowrap;        
+								font-weight: normal;
+							}
+								
+								table .service,
+								table .desc {
+								text-align: left;
+							}
+								
+								table td {
+								padding: 20px;
+								text-align: right;
+							}
+								
+								table td.service,
+								table td.desc {
+								vertical-align: top;
+							}
+								
+								table td.unit,
+								table td.qty,
+								table td.total {
+								font-size: 1.2em;
+							}
+								
+								table td.grand {
+								border-top: 1px solid #5D6975;;
+							}
+								
+								#notices .notice {
+								color: #5D6975;
+								font-size: 1.2em;
+							}
+								
+								footer {
+								color: #5D6975;
+								width: 100%;
+								height: 30px;
+								position: absolute;
+								bottom: 0;
+								border-top: 1px solid #C1CED9;
+								padding: 8px 0;
+								text-align: center;
+							}
+						</style>
+						<meta charset="utf-8">
+						<title>Data Pegawai</title>
+					</head>
+					<body>
+						<header class="clearfix">
+                            <img src="img/logo.png" style="width:80px;display:inline;margin-left:150px">
+                            <h1 style="padding-top:-80px;margin-left:50px">  PT. Wimpie Setiono</h1>
+                            <div class="alamat" style="margin-left:50px">
+                                General Contractor, Maintenance, & Supplier<br/>
+                                Jl. Raya Kranggan No. 57A, Kranggan - Bekasi<br/>
+                                Telp/Fax 021-84300223/84309711<br/>
+                                Email: ptwimpiesetiono@gmail.com
+
                             </div>
-                        </td>
-                        <td style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0;" valign="top"></td>
-                    </tr>
-                </table>
-            </body>
-        </html>
-            
-        ');
-        // $mpdf->Output('MyPDF.pdf', 'D');
+						    <hr/>
+                            
+                            <p style="text-align:center;font-size:14px;"><b>Data Pegawai</b></p>
+                            <div id="project">
+                            
+                                <p></p>
+                                <div><span>TANGGAL : '.date('d M Y').'</span> </div>
+                                <div><span>DICETAK OLEH : '.Yii::$app->user->identity->name.'</span> </div>							
+        
+                            </div>
+						</header>
+						<main>
+						<table>
+							<thead>
+                                <tr>
+                                    <th class="service">No</th>
+                                    <th class="desc">Nama</th>
+                                    <th>Jabatan</th>
+                                    <th>No. Ktp</th>
+                                    <th>Alamat Ktp</th>
+                                    <th>Alamat Korespodensi</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Agama</th>
+                                    <th>No Tlp</th>
+                                    <th>Email</th>
+                                </tr>
+							</thead>
+							<tbody>
+                               '.$content.'
+							
+							</tbody>
+						</table>
+					
+						</main>
+						
+					</body>
+				</html>
+		');
         $mpdf->Output();
         exit;
     }
