@@ -24,7 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idpembayaran',
+              [
+				'attribute' =>  'idpembayaran',
+				'format' => 'raw',
+				'value' => function ($model) {		 
+					return  '<a href="?r=tbl-pembayaran/cetak&id='.$model->idpembayaran.'">'.$model->idpembayaran.'</a>';
+				
+				},
+			],               
             'idspk',
             'tgl_bayar',
             'total_bayar',

@@ -1,6 +1,8 @@
 <?php
 
 namespace backend\models;
+use mPdf;
+
 
 use Yii;
 
