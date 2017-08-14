@@ -8,7 +8,7 @@ use backend\models\TblJadwal;
 /* @var $searchModel backend\models\TblPenggajianSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tbl Penggajian';
+$this->title = 'Penggajian';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-penggajian-index">
