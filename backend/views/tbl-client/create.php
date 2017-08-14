@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TblClient */
 
-$this->title = 'Create Tbl Client';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Client', 'url' => ['index']];
+$this->title = 'Tambah Data Client';
+$this->params['breadcrumbs'][] = ['label' => 'Client', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-client-create">

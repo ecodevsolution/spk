@@ -54,7 +54,7 @@
                         <fieldset>
                             <div class="form-group row">                                
                                 <div class="col-md-8"> 
-                                    <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                                    <?= Html::submitButton($model->isNewRecord ? 'Tambah' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                                 </div>
                             </div>
                         </fieldset>                                                    

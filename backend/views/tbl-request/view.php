@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\TblRequest */
 
 $this->title = $model->idrequest;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Request', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Request Pekerjaan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-request-view">

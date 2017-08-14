@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TblRole */
 
-$this->title = 'Update Tbl Role: ' . $model->idrole;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Role', 'url' => ['index']];
+$this->title = 'Edit Role: ' . $model->idrole;
+$this->params['breadcrumbs'][] = ['label' => 'Role', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->idrole, 'url' => ['view', 'id' => $model->idrole]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

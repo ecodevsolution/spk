@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\TblSpkSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tbl Spk';
+$this->title = 'Surat Perintah Kerja';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-spk-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tbl Spk', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Tambah Spk', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
                                             ]
                                         ]); ?>                                
                                     <div class="header card-header-text">
-                                        <h4 class="title">Register Jabatan</h4>
+                                        <h4 class="title">Tambah Jabatan</h4>
                                     </div>
                                     <div class="content">
 
@@ -44,7 +44,7 @@ use yii\widgets\ActiveForm;
 
                                          <div class="form-group">
                                             <div class="col-md-3">
-                                                <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                                                <?= Html::submitButton($model->isNewRecord ? 'Tambah' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                                             </div>
                                         </div>
 

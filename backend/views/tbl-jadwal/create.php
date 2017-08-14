@@ -6,13 +6,13 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TblJadwal */
 
-$this->title = 'Create Tbl Jadwal';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Jadwal', 'url' => ['index']];
+$this->title = 'Tambah Jadwal';
+$this->params['breadcrumbs'][] = ['label' => 'Jadwal', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-jadwal-create">
 
-    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
+    <h2><?= Html::encode($this->title) ?></h2> 
 
     <?= $this->render('_form', [
         'model' => $model,        

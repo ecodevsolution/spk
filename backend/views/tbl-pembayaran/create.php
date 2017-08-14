@@ -6,13 +6,13 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TblPembayaran */
 
-$this->title = 'Create Tbl Pembayaran';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Pembayaran', 'url' => ['index']];
+$this->title = 'Tambah Pembayaran';
+$this->params['breadcrumbs'][] = ['label' => 'Pembayaran', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-pembayaran-create">
 
-    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
+    <h2><?= Html::encode($this->title) ?></h2> 
 
     <?= $this->render('_form', [
         'model' => $model,

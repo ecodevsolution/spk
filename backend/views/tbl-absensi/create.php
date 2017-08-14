@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TblAbsensi */
 
-$this->title = 'Create Tbl Absensi';
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Absensi', 'url' => ['index']];
+$this->title = 'Tambah Absensi';
+$this->params['breadcrumbs'][] = ['label' => 'Absensi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-absensi-create">

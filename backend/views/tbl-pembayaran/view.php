@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\TblPembayaran */
 
 $this->title = $model->idpembayaran;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Pembayaran', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Pembayaran', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-pembayaran-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idpembayaran], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idpembayaran], [
+        <?= Html::a('Edit', ['update', 'id' => $model->idpembayaran], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Hapus', ['delete', 'id' => $model->idpembayaran], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

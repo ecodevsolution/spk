@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
      <p style="display:inline">
-        <?= Html::a('Create data Client', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Tambah data Client', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
      <p style="float:right">
         <?= Html::a('', ['cetak'], ['class' => 'fa fa-file-pdf-o fa-2x']) ?>

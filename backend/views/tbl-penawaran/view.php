@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\TblPenawaran */
 
 $this->title = $model->idpenawaran;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Penawarans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Penawaran', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-penawaran-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idpenawaran], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idpenawaran], [
+        <?= Html::a('Edit', ['update', 'id' => $model->idpenawaran], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Hapus', ['delete', 'id' => $model->idpenawaran], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

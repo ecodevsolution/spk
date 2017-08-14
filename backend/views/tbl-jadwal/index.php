@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\TblJadwalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tbl Jadwal';
+$this->title = 'Jadwal';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tbl-jadwal-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p style="display:inline">
-        <?= Html::a('Create Tbl Jadwal', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Tambah Tbl Jadwal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
      <p style="float:right">
         <?= Html::a('', ['cetak'], ['class' => 'fa fa-file-pdf-o fa-2x']) ?>

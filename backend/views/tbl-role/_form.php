@@ -33,7 +33,7 @@ use yii\widgets\ActiveForm;
 
    										 <div class="form-group">
                                             <div class="col-md-3">
-                                                <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                                                <?= Html::submitButton($model->isNewRecord ? 'Tambah' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                                             </div>
                                         </div>
 

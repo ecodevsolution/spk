@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TblRequest */
 
-$this->title = 'Update Tbl Request: ' . $model->idrequest;
-$this->params['breadcrumbs'][] = ['label' => 'Tbl Request', 'url' => ['index']];
+$this->title = 'Edit Data Request: ' . $model->idrequest;
+$this->params['breadcrumbs'][] = ['label' => 'Request Pekerjaan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->idrequest, 'url' => ['view', 'id' => $model->idrequest]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
