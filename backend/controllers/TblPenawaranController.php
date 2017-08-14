@@ -88,7 +88,7 @@ class TblPenawaranController extends Controller
         $mpdf = new \Mpdf\Mpdf();        
         $content = '';
         $connection = \Yii::$app->db;
-        $sql = $connection->createCommand("SELECT item_pekerjaan,satuan,satuan_harga,  satuan_harga * quantity total FROM tbl_detailpenawaran a JOIN tbl_daftarharga b ON a.kode_pekerjaan = b.kode_pekerjaan WHERE idpenawaran = ".$id." ");
+        $sql = $connection->createCommand("SELECT item_pekerjaan,satuan,satuan_harga, quantity, satuan_harga * quantity total FROM tbl_detailpenawaran a JOIN tbl_daftarharga b ON a.kode_pekerjaan = b.kode_pekerjaan WHERE idpenawaran = ".$id." ");
         $model = $sql->queryAll();
         
         $master = TblPenawaran::find()
@@ -96,15 +96,17 @@ class TblPenawaranController extends Controller
                 ->Where(['idpenawaran'=>$id])
                 ->One();
 
+        $total = 0;
         foreach($model as $i =>$models):
         $i = $i+1;
         $content .= ' <tr>
                          <td class="service">'.$i.'</td>
                          <td class="desc">'.$models['item_pekerjaan'].'</td>
-                         <td>'.$models['satuan'].'</td>
+                         <td>'.$models['quantity'].$models['satuan'].'</td>
                          <td>'.number_format($models['satuan_harga'],0,".",".").'</td>
                          <td>'.number_format($models['total'],0,".",".").'</td>                         
                      </tr>';
+            $total += $models['total'];
         endforeach;
 
      $mpdf->WriteHTML('
@@ -305,7 +307,12 @@ class TblPenawaranController extends Controller
 							<tbody>
                                '.$content.'
 							
+                                <tr>
+                                    <td colspan="4" class="grand total">GRAND TOTAL</td>
+                                    <td class="grand total">'.number_format($total,0,".",".").'</td>
+                                </tr>
 							</tbody>
+                             
 						</table>
 					
 						</main>
