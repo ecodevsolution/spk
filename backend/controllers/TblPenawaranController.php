@@ -95,7 +95,7 @@ class TblPenawaranController extends Controller
                 ->joinWith('tblRequest')
                 ->Where(['idpenawaran'=>$id])
                 ->One();
-
+ 
         $total = 0;
         foreach($model as $i =>$models):
         $i = $i+1;
