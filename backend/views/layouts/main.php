@@ -73,9 +73,6 @@
                                     <li>
                                         <a class="nav-link" href="index.php?r=tbl-jabatan/index">Jabatan</a>
                                     </li>
-                                    <li>
-                                        <a class="nav-link" href="index.php?r=tbl-absensi/index">Absensi</a>
-                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -122,6 +119,24 @@
                                 <ul class="nav flex-column">
                                     <li><a class="nav-link" href="index.php?r=tbl-spk/index">SPK</a></li>
                                     <li><a class="nav-link" href="index.php?r=tbl-jadwal/index">Jadwal Kerja</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                          <li class="d-flex flex-column">
+                            <a data-toggle="collapse" href="#absensi" class="collapsed nav-link" aria-expanded="false">
+                                <i class="nav-icon fa fa-child"></i>
+                                <p>Absensi
+                                    <i class="fa fa-sort-desc submenu-toggle"></i>
+                                </p>
+                            </a>
+                            <div class="collapse" id="absensi" role="navigation" aria-expanded="false" style="height: 0px;">
+                                <ul class="nav flex-column">
+                                    <li>
+                                        <a class="nav-link" href="index.php?r=tbl-absensi/index"> Data Absensi</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="index.php?r=tbl-absensi/index"> View Absensi</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
