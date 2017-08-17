@@ -98,14 +98,14 @@
                                                             <?= $form->field($modeldetails, "[{$i}]kode_pekerjaan")->dropDownList(
                                                                 ArrayHelper::map(TblDaftarharga::find()->all(),'kode_pekerjaan', 'item_pekerjaan'),
                                                                 ['prompt'=>'- Choose -',
-                                                                'style'=>'height: calc(3.25rem + 2px);'])->label('Nama Pekerjaan');                 
+                                                                'style'=>'height: calc(3.25rem + 2px);','required'=>true])->label('Nama Pekerjaan');                 
                                                             ?>
                                                         </div>
                                                     </div>
                                                    
                                                         <div class="col-sm-6 col-xs-12">	
                                                              <div class="form-group">
-                                                            <?= $form->field($modeldetails, "[{$i}]quantity")->textInput(['style'=>'margin-left: 60px;width: 20%;margin-top:32px;','placeholder'=>'Qty'])->label(false)?>                                                                                                              
+                                                            <?= $form->field($modeldetails, "[{$i}]quantity")->textInput(['style'=>'margin-left: 60px;width: 20%;margin-top:32px;','required'=>true,'placeholder'=>'Qty'])->label(false)?>                                                                                                              
                                                         </div>
                                                     </div>
                                                 </div>

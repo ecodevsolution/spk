@@ -27,6 +27,7 @@ class TblRole extends \yii\db\ActiveRecord
     {
         return [
             [['nama'], 'string', 'max' => 50],
+            [['nama'],'required'],
         ];
     }
 

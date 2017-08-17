@@ -142,7 +142,7 @@
                                                             <?php
 																foreach ($modelx as $modelxy)
 																$data[$modelxy['id']] = $modelxy['username'] . ' - '. $modelxy['name'];     
-																echo $form->field($modeldetails, "[{$i}]idpegawai")->dropDownList($data ,array('prompt' => '--Choose--', 'style'=>'height: calc(3.25rem + 2px)'))->label(false);	 
+																echo $form->field($modeldetails, "[{$i}]idpegawai")->dropDownList($data ,array('prompt' => '--Choose--', 'style'=>'height: calc(3.25rem + 2px)','required'=>true))->label(false);	 
 														
 															?>														
                                                             <!--<?= $form->field($modeldetails, "[{$i}]idpegawai")->dropDownList(

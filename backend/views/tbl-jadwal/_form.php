@@ -34,7 +34,7 @@
                                         <?= $form->field($model, 'idspk')->dropDownList(
                                             ArrayHelper::map(TblSpk::find()->all(),'idspk', 'idspk'),
                                             ['prompt'=>'- Choose -',
-                                             'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
+                                             'style'=>'height: calc(3.25rem + 2px);','required'=>true])->label(false);                 
                                             ?>         
                                     </div>
                                 </div>

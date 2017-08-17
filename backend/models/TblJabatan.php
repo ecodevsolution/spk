@@ -28,6 +28,7 @@ class TblJabatan extends \yii\db\ActiveRecord
     {
         return [
             [['gaji'], 'number'],
+            [['nama_jabatan','gaji'],'required'],
             [['nama_jabatan'], 'string', 'max' => 20],
         ];
     }
