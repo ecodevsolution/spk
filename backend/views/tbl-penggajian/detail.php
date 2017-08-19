@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $model->tblSpk->area_pekerjaan; ?></td>
                 <td><?= $model->tblSpk->tgl_mulai; ?></td>
                 <td><?= $model->tblSpk->tgl_selesai; ?></td>
-                <td><?= number_format($modelzz['Gaji'],0,".",".")?></td>
+                <td><?= 'Rp. '. number_format($modelzz['Gaji'],0,".",".")?></td>
              </tr>              
          </tbody>
      </table>
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $models['username']; ?></td>
                 <td><?= $models['name']; ?></td>
                 <td><?= $models['nama_jabatan']; ?></td>
-                <td><?= number_format($models['Gaji'],0,".","."); ?></td>                
+                <td><?= 'Rp. '.number_format($models['Gaji'],0,".","."); ?></td>                
              </tr>  
 
              <?php endforeach; ?>            
@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $models['username']; ?></td>
                 <td><?= $models['name']; ?></td>
                 <td><?= $models['nama_jabatan']; ?></td>
-                <td><?= number_format($models['Gaji'],0,".","."); ?></td>                
+                <td><?= 'Rp. '.number_format($models['Gaji'],0,".","."); ?></td>                
              </tr>  
 
              <?php endforeach; ?>            

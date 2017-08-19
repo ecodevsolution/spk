@@ -24,8 +24,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             
-            'nama_jabatan',
-            'gaji',
+            'nama_jabatan',            
+             [
+				'attribute' =>  'gaji',
+				'format' => 'raw',
+				'value' => function ($model) {		 
+					return  'Rp. '.number_format($model->gaji,0,".",".");
+				
+				},
+			],	
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

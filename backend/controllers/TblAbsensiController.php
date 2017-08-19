@@ -273,9 +273,12 @@ class TblAbsensiController extends Controller
                 $loop .= '<td class="text-primary">'.date('d M Y').'</td>';                
                 $loop .= '<td class="text-primary">'.$pengganti.'</td>';
                 $loop .= '<tr>';
+
             endforeach;
+            $loop .="<input type='hidden' id='checkx' value=".$spk.">";
         }else{
             $loop='Tidak ada data pegawai masuk';
+            $loop .="<input type='hidden' id='checkx' value=".$spk.">";
         }        
 
         echo '<table class="table">

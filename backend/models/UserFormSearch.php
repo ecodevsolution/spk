@@ -15,11 +15,12 @@ class UserFormSearch extends UserForm
     /**
      * @inheritdoc
      */
+    public $jabatan;
     public function rules()
     {
         return [
             [['id', 'idrole', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'idjabatan', 'name', 'no_ktp', 'alamat_ktp', 'alamat', 'tgl_lahir', 'jenis_kelamin', 'agama', 'no_telp', 'auth_key',  'perusahaan', 'password_hash', 'password_reset_token', 'email'], 'safe'],
+            [['username','jabtan', 'idjabatan', 'name', 'no_ktp', 'alamat_ktp', 'alamat', 'tgl_lahir', 'jenis_kelamin', 'agama', 'no_telp', 'auth_key',  'perusahaan', 'password_hash', 'password_reset_token', 'email'], 'safe'],
         ];
     }
 
@@ -42,7 +43,9 @@ class UserFormSearch extends UserForm
     public function search($params)
     {
         $query = UserForm::find();
+        $query->joinWith(['tblJabatan']);
         $query->Where(['idrole'=> 1]);
+        
 
         // add conditions that should always apply here
 
@@ -50,11 +53,7 @@ class UserFormSearch extends UserForm
             'query' => $query,
         ]);
 
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
 

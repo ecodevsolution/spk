@@ -266,20 +266,17 @@ class TblPembayaranController extends Controller
                                     <td class="service">'.$master['idspk'].'</td>
                                     <td class="desc">'.$master['nama_pekerjaan'].'</td>
                                     <td class="unit">'.$master['area_pekerjaan'].'</td>
-                                    <td colspan="2" class="qty">'.number_format($master['harga_pekerjaan'],0,".",".").'</td>                                    
+                                    <td colspan="2" class="qty">Rp. '.number_format($master['harga_pekerjaan'],0,".",".").'</td>                                    
                                 </tr>
                                
                                 <tr>
                                     <td colspan="4">SUBTOTAL</td>
-                                    <td class="total">'.number_format($master['total_bayar'],0,".",".").'</td>
+                                    <td class="total">Rp. '.number_format($master['total_bayar'],0,".",".").'</td>
                                 </tr>
-                                <tr>
-                                    <td colspan="4">TAX 0%</td>
-                                    <td class="total">0</td>
-                                </tr>
+                              
                                 <tr>
                                     <td colspan="4" class="grand total">GRAND TOTAL</td>
-                                    <td class="grand total">'.number_format($master['total_bayar'],0,".",".").'</td>
+                                    <td class="grand total">Rp. '.number_format($master['total_bayar'],0,".",".").'</td>
                                 </tr>
                                 </tbody>
                             </table>

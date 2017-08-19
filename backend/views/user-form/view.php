@@ -9,6 +9,10 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Data Pegawai', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+use backend\models\TblJabatan;
+
+$mode = TblJabatan::findOne($model->idjabatan);
 ?>
 <div class="user-form-view">
 
@@ -29,8 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'username',
-            'idjabatan',
+            'username',            
+            [
+                'label' => 'Jabatan',
+                'value' => $mode->nama_jabatan
+            ],
             'name',
             'no_ktp',
             'alamat_ktp',

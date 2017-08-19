@@ -25,8 +25,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'kode_pekerjaan',
-            'item_pekerjaan',
-            'harga_pekerjaan',
+            'item_pekerjaan',            
+             [
+				'attribute' =>  'harga_pekerjaan',
+				'format' => 'raw',
+				'value' => function ($model) {		 
+					return  'Rp. '.number_format($model->harga_pekerjaan,0,".",".");
+				
+				},
+			],	
             'satuan',
 
             ['class' => 'yii\grid\ActionColumn'],

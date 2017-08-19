@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Edit', ['update', 'id' => $model->idpembayaran], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Back', ['index'], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Hapus', ['delete', 'id' => $model->idpembayaran], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -30,8 +30,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'idpembayaran',
             'idspk',
-            'tgl_bayar',
-            'total_bayar',
+            'tgl_bayar',            
+            [
+				'attribute' =>  'total_bayar',
+				'format' => 'raw',
+				'value' => function ($model) {		 
+					return  'Rp. '.number_format($model->total_bayar,0,".",".");
+				
+				},
+			],
         ],
     ]) ?>
 

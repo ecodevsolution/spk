@@ -33,10 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
 				},
 			],               
             'idspk',
-            'tgl_bayar',
-            'total_bayar',
+            'tgl_bayar',            
+            [
+				'attribute' =>  'total_bayar',
+				'format' => 'raw',
+				'value' => function ($model) {		 
+					return  'Rp. '.number_format($model->total_bayar,0,".",".");
+				
+				},
+			],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumns'],
         ],
     ]); ?>
 </div>

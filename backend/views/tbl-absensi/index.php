@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'verifikasi_1',
             'verifikasi_2',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumns'],
         ],
     ]); ?>
 </div>

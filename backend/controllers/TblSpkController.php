@@ -287,7 +287,7 @@ class TblSpkController extends Controller
 							}
 						</style>
 						<meta charset="utf-8">
-						<title>Data Pegawai</title>
+						<title>Surat Perintah Kerja</title>
 					</head>
 					<body>
 						<header class="clearfix">

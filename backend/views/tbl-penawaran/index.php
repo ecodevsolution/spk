@@ -36,9 +36,16 @@ $this->params['breadcrumbs'][] = $this->title;
 				'attribute'=>'request',
 				'value'=>'tblRequest.nama_pekerjaan',
 			],
-            'total_penawaran',
+            [
+				'attribute' =>  'total_penawaran',
+				'format' => 'raw',
+				'value' => function ($model) {		 
+					return  'Rp. '.number_format($model->total_penawaran,0,".",".");
+				
+				},
+			],	
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumns'],
         ],
     ]); ?>
 </div>

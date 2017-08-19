@@ -309,7 +309,7 @@ class TblPenawaranController extends Controller
 							
                                 <tr>
                                     <td colspan="4" class="grand total">GRAND TOTAL</td>
-                                    <td class="grand total">'.number_format($total,0,".",".").'</td>
+                                    <td class="grand total">Rp. '.number_format($total,0,".",".").'</td>
                                 </tr>
 							</tbody>
                              

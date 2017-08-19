@@ -47,6 +47,11 @@ class UserForm extends \yii\db\ActiveRecord
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
+
+     public function getTblJabatan()
+    {
+        return $this->hasOne(TblJabatan::className(), ['idjabatan' => 'idjabatan']);
+    }
     public function rules()
     {
         return [
