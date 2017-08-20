@@ -135,7 +135,7 @@
                                         <a class="nav-link" href="index.php?r=tbl-absensi/index"> Data Absensi</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="index.php?r=tbl-absensi/index"> View Absensi</a>
+                                        <a class="nav-link" href="index.php?r=tbl-absensi/views"> View Absensi</a>
                                     </li>
                                 </ul>
                             </div>
@@ -150,7 +150,7 @@
                             <div class="collapse" id="pembayaran" role="navigation" aria-expanded="false" style="height: 0px;">
                                 <ul class="nav flex-column">
                                     <li><a class="nav-link" href="index.php?r=tbl-pembayaran/index">Data Pembayaran</a></li>
-                                    <li><a class="nav-link" #href="index.php?r=/index">Riwayat Pembayaran</a></li>
+                                    <li><a class="nav-link" href="index.php?r=tbl-pembayaran/riwayat">Riwayat Pembayaran</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -164,7 +164,7 @@
                             <div class="collapse" id="penggajian" role="navigation" aria-expanded="false" style="height: 0px;">
                                 <ul class="nav flex-column">
                                     <li><a class="nav-link" href="index.php?r=tbl-penggajian/index">Data Penggajian</a></li>
-                                    <li><a class="nav-link" #href="tables/data-tables.html">Riwayat Penggajian</a></li>
+                                    <li><a class="nav-link" href="index.php?r=tbl-penggajian/riwayat">Riwayat Penggajian</a></li>
                                 </ul>
                             </div>
                         </li>

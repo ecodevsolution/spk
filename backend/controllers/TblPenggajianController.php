@@ -9,6 +9,7 @@ use backend\models\TblAbsensi;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\TblJadwal;
 
 /**
  * TblPenggajianController implements the CRUD actions for TblPenggajian model.
@@ -67,6 +68,49 @@ class TblPenggajianController extends Controller
          return $this->render('detail',[
              'model'=>$model
          ]);        
+    }
+
+    public function actionRiwayat(){
+
+       $model = TblAbsensi::find()
+                ->JoinWith('tblSpk')
+                ->groupBy('idspk')
+                ->All();
+
+        return $this->render('riwayat', [
+            'model' => $model            
+        ]);
+
+    }
+
+    public function actionGetdata()
+    {
+      
+      $model = TblAbsensi::find()
+                ->JoinWith('tblSpk')
+                ->groupBy('idspk')                
+                ->Where(['between','tgl_mulai',date('Y-m-d',strtotime($_POST['tgl_awal'])), date('Y-m-d',strtotime($_POST['tgl_akhir']))])            
+                ->orWhere(['between','tgl_selesai',date('Y-m-d',strtotime($_POST['tgl_awal'])), date('Y-m-d',strtotime($_POST['tgl_akhir']))])            
+                ->all();
+        
+        if(!empty($model)){
+            foreach($model as $models):                  
+                $jadwal = TblJadwal::find()
+                        ->where(['idspk'=>$models->idspk])
+                        ->One();
+
+                echo '<tr>';
+                    echo '<td>'.$models->idspk.'</td>';
+                    echo '<td>'.$models->tblSpk->area_pekerjaan.'</td>';
+                    echo '<td>'.$models->tblSpk->tgl_mulai.'</td>';                    
+                    echo '<td>'.$models->tblSpk->tgl_selesai.'</td>';                                        
+                    echo '<td>'.$jadwal->status_jadwal.'</td>';                                                            
+                    echo '<td><a href="?r=tbl-penggajian/detail&id='.$models->idspk.'"><i class="fa fa-pencil"></i></a></td>';
+                echo '</tr>';        
+            endforeach;
+        }else{
+            echo '<tr><td colspan="6">No data(s) found...</td></tr>';            
+        }
     }
 
     /**

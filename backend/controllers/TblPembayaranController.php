@@ -45,6 +45,44 @@ class TblPembayaranController extends Controller
         ]);
     }
 
+    public function actionRiwayat(){
+
+        $model = TblPembayaran::find()
+                ->joinWith('tblSpk')
+                ->all();
+
+        return $this->render('riwayat',[
+            'model'=>$model,
+        ]);
+
+    }
+
+    public function actionGetdata()
+    {
+      
+       $model = TblPembayaran::find()
+            ->joinWith('tblSpk')
+            ->Where(['between','tgl_bayar',date('Y-m-d',strtotime($_POST['tgl_awal'])), date('Y-m-d',strtotime($_POST['tgl_akhir']))])            
+            ->all();
+        
+        if(!empty($model)){
+            foreach($model as $models):                  
+  
+
+                echo '<tr>';
+                    echo '<td>'.$models->idspk.'</td>';
+                    echo '<td>'.$models->tblSpk->area_pekerjaan.'</td>';
+                    echo '<td>'.$models->tgl_bayar.'</td>';                    
+                    echo '<td>Rp. '.number_format($models->total_bayar,0,".",".").'</td>';
+                    echo '<td><span class="label label-success">Sudah Dibayar</span></td>';                         
+                    echo '<td><a href="?r=tbl-pembayaran/cetak&id='. $models->idpembayaran .'"><i class="fa fa-print"></i></a></td>';
+                echo '</tr>';        
+            endforeach;
+        }else{
+            echo '<tr><td colspan="6">No data(s) found...</td></tr>';            
+        }
+    }
+
      public function actionCetak($id){
     
         $mpdf = new \Mpdf\Mpdf();        

@@ -48,6 +48,27 @@ class TblAbsensiController extends Controller
         ]);
     }
 
+    public function actionViews(){
+       $model = TblAbsensi::find()
+                ->JoinWith('tblSpk')
+                ->groupBy('idspk')
+                ->All();
+
+        return $this->render('views', [
+            'model' => $model            
+        ]);
+    }
+    public function actionDetail($id){
+        $model = TblAbsensi::find()
+                ->joinWith('tblSpk')                
+                ->where(['tbl_spk.idspk'=>$id])
+                ->One();
+
+         return $this->render('detail',[
+             'model'=>$model
+         ]);  
+    }
+
     /**
      * Displays a single TblAbsensi model.
      * @param integer $id
