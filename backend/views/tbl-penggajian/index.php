@@ -20,8 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  <th>SPK</th>
                  <th>Area</th>
                  <th>Tanggal Mulai</th>
-                 <th>Tanggal Akhir</th>                 
-                 <th>Status</th>
+                 <th>Tanggal Akhir</th>                                  
                  <th>Action</th>
              </tr>
          </thead>
@@ -37,8 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  <td><?= $models->idspk ?></td>
                  <td><?= $models->tblSpk->area_pekerjaan ?></td>
                  <td><?= $models->tblSpk->tgl_mulai ?></td>
-                 <td><?= $models->tblSpk->tgl_selesai ?></td>                 
-                 <td><?= $jadwal->status_jadwal; ?></td>
+                 <td><?= $models->tblSpk->tgl_selesai ?></td>                                  
                  <td><a href="?r=tbl-penggajian/detail&id=<?= $models->idspk ?>"><i class="fa fa-pencil"></i></a></td>
              </tr>
              <?php endforeach; ?>

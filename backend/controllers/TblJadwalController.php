@@ -59,7 +59,7 @@ class TblJadwalController extends Controller
         $mpdf = new \Mpdf\Mpdf();        
         $content = '';
         $connection = \Yii::$app->db;
-        $sql = $connection->createCommand("SELECT c.idspk, nama_pekerjaan, status_jadwal FROM tbl_jadwal c JOIN tbl_spk d ON c.idspk = d.idspk JOIN tbl_penawaran e ON d.idpenawaran = e.idpenawaran JOIN tbl_request f ON e.idrequest = f.idrequest");
+        $sql = $connection->createCommand("SELECT c.idspk, nama_pekerjaan, tgl_mulai, tgl_selesai, status_jadwal FROM tbl_jadwal c JOIN tbl_spk d ON c.idspk = d.idspk JOIN tbl_penawaran e ON d.idpenawaran = e.idpenawaran JOIN tbl_request f ON e.idrequest = f.idrequest");
         $model = $sql->queryAll();
         
         foreach($model as $i =>$models):
@@ -68,6 +68,8 @@ class TblJadwalController extends Controller
                          <td class="service">'.$i.'</td>
                          <td class="desc">'.$models['idspk'].'</td>
                          <td>'.$models['nama_pekerjaan'].'</td>            
+                         <td>'.date('d-m-Y',strtotime($models['tgl_mulai'])).'</td>            
+                         <td>'.date('d-m-Y',strtotime($models['tgl_selesai'])).'</td>            
                          <td>'.$models['status_jadwal'].'</td>                         
                      </tr>';
         endforeach;
@@ -258,6 +260,8 @@ class TblJadwalController extends Controller
                                     <th class="service">No</th>
                                     <th class="service">ID Spk</th>
                                     <th class="desc">Nama Pekerjaan</th>
+                                    <th class="desc">Tgl Mulai</th>
+                                    <th class="desc">Tgl Selesai</th>
                                     <th>Status Jadwal</th>                                 
                                 </tr>
 							</thead>

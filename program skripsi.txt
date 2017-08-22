@@ -9,10 +9,14 @@ tabel request : ok
  tabel penawaran : ok
 master daftar harga : 0k
 tabel spk : ok
-tabel jadwal : status jadwal on go terus, jadwal bisa dibuat berkali-kali dengan no spk sama? , viewnya & report tambah tgl mulai dan selesai
+tabel jadwal : status jadwal on go terus -> done
+	       jadwal bisa dibuat berkali-kali -> done
+	      viewnya & report tambah tgl mulai dan selesai -> done
+
 tabel absensi : spk sudah selesai seharusnya tidak muncul karena jika ditambah eror.  ->done
-tabel pembayaran : sudah selesai seharusnya tidak muncul 
-tabel penggajian : status gaji on go terus
+tabel pembayaran : sudah selesai seharusnya tidak muncul -> done
+
+tabel penggajian : status gaji on go terus -> done
 
 
 
@@ -61,7 +65,7 @@ tax 				    ->done
 	
 
 5. status 
-form request 
+form request -> done
 
 
 

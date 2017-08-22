@@ -28,7 +28,7 @@ class TblJadwal extends \yii\db\ActiveRecord
     {
         return [
             [['idspk'], 'string', 'max' => 8],
-            [['status_jadwal'], 'string', 'max' => 5],
+            [['status_jadwal'], 'string', 'max' => 10],
         ];
     }
 

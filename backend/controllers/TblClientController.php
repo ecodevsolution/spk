@@ -66,7 +66,7 @@ class TblClientController extends Controller
         $mpdf = new \Mpdf\Mpdf();        
         $content = '';
         $connection = \Yii::$app->db;
-        $sql = $connection->createCommand("SELECT * FROM `user` a JOIN tbl_jabatan b ON a.idjabatan = b.idjabatan WHERE a.idrole = 2");
+        $sql = $connection->createCommand("SELECT * FROM `user` a JOIN tbl_role b ON a.idrole = b.idrole WHERE a.idrole = 2");
         $model = $sql->queryAll();
         
         foreach($model as $i =>$models):

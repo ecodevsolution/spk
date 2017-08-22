@@ -5,6 +5,7 @@
     use backend\models\TblSpk;
     use backend\models\UserForm;
     use wbraganca\dynamicform\DynamicFormWidget;
+    use backend\models\TblJadwal;
     /* @var $this yii\web\View */
     /* @var $model backend\models\TblJadwal */
     /* @var $form yii\widgets\ActiveForm */
@@ -31,8 +32,14 @@
                                 <div class="select">
                                     <label class="col-md-2 col-form-label">SPK</label>
                                     <div class="col-md-8">
+                                        <?php
+                                            $array = TblJadwal::find()
+                                                    ->select('idspk')
+                                                    ->asArray()
+                                                    ->all();                                                                                      
+                                        ?>
                                         <?= $form->field($model, 'idspk')->dropDownList(
-                                            ArrayHelper::map(TblSpk::find()->all(),'idspk', 'idspk'),
+                                            ArrayHelper::map(TblSpk::find()->where(['not in','idspk',$array])->all(),'idspk', 'idspk'),
                                             ['prompt'=>'- Choose -',
                                              'style'=>'height: calc(3.25rem + 2px);','required'=>true])->label(false);                 
                                             ?>         

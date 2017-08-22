@@ -4,6 +4,7 @@
     use yii\helpers\ArrayHelper;
     use backend\models\TblPenawaran;
     use backend\models\TblSpk;
+    use backend\models\TblPembayaran;
     use yii\web\View;
     /* @var $this yii\web\View */
     /* @var $model backend\models\TblPembayaran */
@@ -72,11 +73,17 @@
                                             ['prompt'=>'- Choose -',
                                              'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
                                             ?>        -->
-
+                                            
+                                            <?php
+                                                $array = TblPembayaran::find()
+                                                        ->select('idspk')
+                                                        ->asArray()
+                                                        ->all();                                                                                      
+                                            ?>
                                              <?= $form->field($model, 'idspk')->dropDownList(
-                                                ArrayHelper::map(TblSpk::find()->all(),'idspk', 'idspk'),
+                                                ArrayHelper::map(TblSpk::find()->where(['not in','idspk',$array])->all(),'idspk', 'idspk'),
                                                 ['prompt'=>'- Choose -',
-                                                'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
+                                            'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
                                             ?>     
                                     </div>
                                 </div>

@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\TblPembayaran;
 use backend\models\TblSpk;
+use backend\models\TblJadwal;
 use backend\models\TblPembayaranSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -356,8 +357,24 @@ class TblPembayaranController extends Controller
 
         if ($model->load(Yii::$app->request->post())){
             
+            $update = TblJadwal::find()
+                    ->where(['idspk'=>$model->idspk])
+                    ->One();
+            $update->status_jadwal = 'SELESAI';            
+            $update->save();
+            
+           
+            // Yii::$app->db->createCommand("")->execute();
+
+            //  $connection = \Yii::$app->db;
+            //  $sql = $connection->createCommand("");
+            //  $sql->execute();
+
             $model->tgl_bayar = date("Y-m-d",strtotime($model->tgl_bayar));
             $model->save();
+
+             Yii::$app->db->createCommand("UPDATE tbl_pembayaran a JOIN tbl_spk b ON a.idspk = b.idspk JOIN tbl_penawaran c ON b.idpenawaran = c.idpenawaran JOIN tbl_request d ON c.idrequest = d.idrequest SET d.`status` = 'SELESAI' WHERE a.idspk = '".$model->idspk."'")->execute();
+
             return $this->redirect(['view', 'id' => $model->idpembayaran]);
         } else {
             return $this->render('create', [
