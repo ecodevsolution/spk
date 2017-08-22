@@ -332,7 +332,7 @@ class UserFormController extends Controller
         $model = $this->findModel($id);
         $nik = $model->username;
         if ($model->load(Yii::$app->request->post())){
-            
+            $model->tgl_lahir = date('Y-m-d',strtotime($model->tgl_lahir));
             $model->password_hash = $model->password_hash;
             $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
