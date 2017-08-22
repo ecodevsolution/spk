@@ -43,6 +43,7 @@ $mode = TblJabatan::findOne($model->idjabatan);
             'alamat_ktp',
             'alamat',
             'tgl_lahir',
+            
             'jenis_kelamin',
             'agama',
             'no_telp',
