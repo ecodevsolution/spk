@@ -2,13 +2,15 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use backend\models\UserForm;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TblRequest */
 
 $this->title = $model->idrequest;
 $this->params['breadcrumbs'][] = ['label' => 'Request Pekerjaan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$mode = UserForm::findOne($model->idclient);
 ?>
 <div class="tbl-request-view">
 
@@ -20,7 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'idrequest',
-            'idclient',
+
+     
+            [
+                'label'=>"Nama Client",
+                'value'=>$mode->name
+
+            ],
             'nama_pekerjaan',
             'status',
         ],

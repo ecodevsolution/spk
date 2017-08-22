@@ -95,7 +95,11 @@ class TblPenawaranController extends Controller
                 ->joinWith('tblRequest')
                 ->Where(['idpenawaran'=>$id])
                 ->One();
- 
+        
+        $cl = $connection->createCommand("SELECT * FROM tbl_penawaran a JOIN tbl_request b ON  a.idrequest = b.idrequest JOIN `user` c ON b.idclient = c.id WHERE idpenawaran = ".$id." ");
+        $client = $cl->queryOne();
+        
+
         $total = 0;
         foreach($model as $i =>$models):
         $i = $i+1;
@@ -288,6 +292,7 @@ class TblPenawaranController extends Controller
 
                                 <p></p>						
                                 <p></p>						
+                                <div><span>KEPADA : '.$client['name'].'</span> </div>							
                                 <div><span>ID PENAWARAN : '.$master->idpenawaran.'</span> </div>							
                                 <div><span>NAMA PEKERJAAN : '.$master->tblRequest->nama_pekerjaan.'</span> </div>							
         
