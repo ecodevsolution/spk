@@ -29,8 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'idpembayaran',
-            'idspk',
-            'tgl_bayar',            
+            'idspk',             
+             [
+                'label'=>'Tanggal Bayar',
+                'value'=>date('d-m-Y',strtotime($model->tgl_bayar))
+            ] ,         
             [
 				'attribute' =>  'total_bayar',
 				'format' => 'raw',
@@ -39,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				
 				},
 			],
+           
         ],
     ]) ?>
 

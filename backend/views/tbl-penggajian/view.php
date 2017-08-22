@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'idgaji',
             'idabsensi',
             'total_gaji',
-            'tgl_gaji',
+            'tgl_gaji',           
         ],
     ]) ?>
 
