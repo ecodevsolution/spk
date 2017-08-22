@@ -1,0 +1,69 @@
+1.validasi
+
+tabel pegawai : ok
+tabel role : ok 
+tabel jabatan : ok 
+tabel client : ok
+form client : ok
+tabel request : ok
+ tabel penawaran : ok
+master daftar harga : 0k
+tabel spk : ok
+tabel jadwal : status jadwal on go terus, jadwal bisa dibuat berkali-kali dengan no spk sama? , viewnya & report tambah tgl mulai dan selesai
+tabel absensi : spk sudah selesai seharusnya tidak muncul karena jika ditambah eror.  ->done
+tabel pembayaran : sudah selesai seharusnya tidak muncul 
+tabel penggajian : status gaji on go terus
+
+
+
+2. insert
+tabel pegawai : ok
+tabel role : ok 
+tabel jabatan : ok 
+tabel client : ok
+form client : ok
+tabel request : ok
+ tabel penawaran : ok
+master daftar harga : 0k
+tabl spk : ok
+tabel jadwal : ok
+tabel absensi : ok
+tabel pembayaran : ok
+tabel penggajian : ok
+
+3.view
+tabel pegawai : jabatan viewnya jangan id tapi labelnya. -> done
+view absensi belum
+riwayat pembayaran belum
+riwayat penggajian
+dashboard belum fungsi		    ->done
+tabel spk : hilangkan edit	    ->done
+tabel absensi : hilangkan edit      ->done
+tabel request : hilangkan edit      ->done
+idclient tampilkan nama client
+tabel penawaran : hilangkan edit    ->done
+tabel pembayaran : hilangkan edit   ->done
+tabel jadwal : hilangkan edit       ->done
+tambahkan rupiah		    ->done
+label report			    ->done
+view master harga : belum ada Rupiah
+
+4.report
+tabel pegawai : ok
+tabel client kenapa yang muncul cuma 1 ga semua?
+penawaran : tambahin nama yang request
+spk : ok
+jadwal : ok
+pembayran : ok hilangkan tax		->done
+
+additinoal : format tanggal di view & report dll belum dd-mm-yyyy (baru di input doang jadi belum keseluruhan)			
+tax 				    ->done
+	
+
+5. status 
+form request 
+
+
+
+
+
