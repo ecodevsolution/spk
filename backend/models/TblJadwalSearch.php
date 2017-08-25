@@ -55,7 +55,9 @@ class TblJadwalSearch extends TblJadwal
 
         $query = TblJadwal::find();
          if(Yii::$app->user->identity->idrole == 2){
-            $query->where(['idspk'=> $spk->idspk]);
+              if(isset($mod)){
+                 $query->where(['idspk'=> $spk->idspk]);
+              }
          }
 
         // add conditions that should always apply here

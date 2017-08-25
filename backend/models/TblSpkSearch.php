@@ -47,7 +47,9 @@ class TblSpkSearch extends TblSpk
                 ->One();
         $query = TblSpk::find();
          if(Yii::$app->user->identity->idrole == 2){
-            $query->where(['idpenawaran'=>$mod->idpenawaran]);
+             if(isset($mod)){
+                $query->where(['idpenawaran'=>$mod->idpenawaran]);
+             }
          }
 
         // add conditions that should always apply here

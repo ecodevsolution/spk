@@ -49,16 +49,32 @@ class TblPembayaranController extends Controller
 
     public function actionRiwayat(){
 
-         $mod = TblPenawaran::find()
-                ->joinWith('tblRequest')
-                ->Where(['idclient'=>Yii::$app->user->identity->id])
-                ->One();
+         if($Yii::$app->user->identity->idrole == 1){
+            $mod = TblPenawaran::find()
+                    ->joinWith('tblRequest')                    
+                    ->One();
+            
 
-
-        $model = TblPembayaran::find()
-                ->joinWith('tblSpk')
-                ->Where(['idpenawaran'=>$mod->idpenawaran])
-                ->all();
+            $model = TblPembayaran::find()
+                    ->joinWith('tblSpk')                    
+                    ->all();
+         }
+           if($Yii::$app->user->identity->idrole == 2){
+            $mod = TblPenawaran::find()
+                    ->joinWith('tblRequest')
+                    ->Where(['idclient'=>Yii::$app->user->identity->id])
+                    ->One();
+            
+            if(isset($mod)){
+                 $model = TblPembayaran::find()
+                    ->joinWith('tblSpk')
+                    ->Where(['idpenawaran'=>$mod->idpenawaran])
+                    ->all();        
+            }else{
+                     $model = TblPembayaran::find()
+                    ->joinWith('tblSpk')                    
+                    ->all();
+           }
 
         return $this->render('riwayat',[
             'model'=>$model,
