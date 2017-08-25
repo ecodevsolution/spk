@@ -34,12 +34,22 @@
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">Client</label>
                                 <div class="col-md-8"> 
-                                   
+                                   <?php
+                                    if(Yii::$app->user->identity->idrole == 2){                                    
+                                   ?>
                                     <?= $form->field($model, 'idclient')->dropDownList(
+                                        ArrayHelper::map(TblClient::find()->where(['id'=>Yii::$app->user->identity->id])->all(),'id', 'name'),
+                                        ['prompt'=>'- Choose -',
+                                         'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
+                                        ?> 
+                                    <?php }else{
+                                    ?>
+                                      <?= $form->field($model, 'idclient')->dropDownList(
                                         ArrayHelper::map(TblClient::find()->where(['idrole'=>2])->all(),'id', 'name'),
                                         ['prompt'=>'- Choose -',
                                          'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
                                         ?>  
+                                    <?php } ?>
                                 </div>
                             </div>
                         </fieldset>
