@@ -43,4 +43,9 @@ class TblJadwal extends \yii\db\ActiveRecord
             'status_jadwal' => 'Status Jadwal',
         ];
     }
+
+     public function getTblSpk()
+    {
+        return $this->hasOne(TblSpk::className(), ['idspk' => 'idspk']);
+    }
 }

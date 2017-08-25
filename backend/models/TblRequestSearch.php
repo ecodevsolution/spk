@@ -44,7 +44,9 @@ class TblRequestSearch extends TblRequest
     {
         $query = TblRequest::find();
         $query->joinWith(['userForm']);
-
+        if(Yii::$app->user->identity->idrole == 2){
+            $query->where(['id'=>Yii::$app->user->identity->id]);
+        }
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

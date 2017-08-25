@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\TblPembayaran;
+use backend\models\TblPenawaran;
 use backend\models\TblSpk;
 use backend\models\TblJadwal;
 use backend\models\TblPembayaranSearch;
@@ -48,8 +49,15 @@ class TblPembayaranController extends Controller
 
     public function actionRiwayat(){
 
+         $mod = TblPenawaran::find()
+                ->joinWith('tblRequest')
+                ->Where(['idclient'=>Yii::$app->user->identity->id])
+                ->One();
+
+
         $model = TblPembayaran::find()
                 ->joinWith('tblSpk')
+                ->Where(['idpenawaran'=>$mod->idpenawaran])
                 ->all();
 
         return $this->render('riwayat',[
@@ -63,6 +71,7 @@ class TblPembayaranController extends Controller
       
        $model = TblPembayaran::find()
             ->joinWith('tblSpk')
+             ->Where(['idpenawaran'=>$mod->idpenawaran])
             ->Where(['between','tgl_bayar',date('Y-m-d',strtotime($_POST['tgl_awal'])), date('Y-m-d',strtotime($_POST['tgl_akhir']))])            
             ->all();
         

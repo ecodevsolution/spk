@@ -15,9 +15,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <?php
+        if(Yii::$app->user->identity->idrole == 1){
+    ?>
     <p style="display:inline">
         <?= Html::a('Tambah Jadwal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php } ?>
      <p style="float:right">
         <?= Html::a('', ['cetak'], ['class' => 'fa fa-file-pdf-o fa-2x']) ?>
     </p>

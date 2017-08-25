@@ -45,6 +45,9 @@ class TblPenawaranSearch extends TblPenawaran
     {
         $query = TblPenawaran::find();
         $query->joinWith(['tblRequest']);
+        if(Yii::$app->user->identity->idrole == 2){
+            $query->where(['idclient'=>Yii::$app->user->identity->id]);
+        }
 
         // add conditions that should always apply here
 

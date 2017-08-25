@@ -55,6 +55,9 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
+                        <?php
+                            if(Yii::$app->user->identity->idrole == 1){
+                        ?>
                         <li class="d-flex flex-column">
                             <a data-toggle="collapse" href="#pegawai" class="collapsed nav-link" aria-expanded="false">
                                 <i class="nav-icon fa fa-child"></i>
@@ -76,6 +79,7 @@
                                 </ul>
                             </div>
                         </li>
+                        <?php } ?>
                         <li class="d-flex flex-column">
                             <a data-toggle="collapse" href="#Cient" class="collapsed nav-link" aria-expanded="false">
                                 <i class="nav-icon fa fa-group"></i>
@@ -85,9 +89,13 @@
                             </a>
                             <div class="collapse" id="Cient" role="navigation" aria-expanded="false" style="height: 0px;">
                                 <ul class="nav flex-column">
+                                     <?php
+                                        if(Yii::$app->user->identity->idrole == 1){
+                                    ?>
                                     <li>
                                         <a class="nav-link" href="index.php?r=tbl-client/index">Data Client</a>
                                     </li>
+                                    <?php } ?>
                                     <li>
                                         <a class="nav-link" href="index.php?r=tbl-request/index">Form Request</a>
                                     </li>
@@ -104,7 +112,11 @@
                             <div class="collapse" id="penawaran" role="navigation" aria-expanded="false" style="height: 0px;">
                                 <ul class="nav flex-column">
                                     <li><a class="nav-link" href="index.php?r=tbl-penawaran/index">Data Penawaran</a></li>
+                                     <?php
+                                        if(Yii::$app->user->identity->idrole == 1){
+                                    ?>
                                     <li><a class="nav-link" href="index.php?r=tbl-daftarharga/index">Master Daftar Harga</a></li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </li>
@@ -117,11 +129,15 @@
                             </a>
                             <div class="collapse" id="pekerjaan" role="navigation" aria-expanded="false" style="height: 0px;">
                                 <ul class="nav flex-column">
-                                    <li><a class="nav-link" href="index.php?r=tbl-spk/index">SPK</a></li>
+                                   
+                                    <li><a class="nav-link" href="index.php?r=tbl-spk/index">SPK</a></li>                                     
                                     <li><a class="nav-link" href="index.php?r=tbl-jadwal/index">Jadwal Kerja</a></li>
                                 </ul>
                             </div>
                         </li>
+                          <?php
+                              if(Yii::$app->user->identity->idrole == 1){
+                          ?>
                           <li class="d-flex flex-column">
                             <a data-toggle="collapse" href="#absensi" class="collapsed nav-link" aria-expanded="false">
                                 <i class="nav-icon fa fa-child"></i>
@@ -140,6 +156,9 @@
                                 </ul>
                             </div>
                         </li>
+                        <?php } ?>
+
+                         
                         <li class="d-flex flex-column">
                             <a data-toggle="collapse" href="#pembayaran" class="collapsed nav-link" aria-expanded="false">
                                 <i class="nav-icon fa fa-dollar"></i>
@@ -149,11 +168,20 @@
                             </a>
                             <div class="collapse" id="pembayaran" role="navigation" aria-expanded="false" style="height: 0px;">
                                 <ul class="nav flex-column">
+                                <?php
+                                    if(Yii::$app->user->identity->idrole == 1){
+                                ?>
                                     <li><a class="nav-link" href="index.php?r=tbl-pembayaran/index">Data Pembayaran</a></li>
+                                 <?php } ?>
                                     <li><a class="nav-link" href="index.php?r=tbl-pembayaran/riwayat">Riwayat Pembayaran</a></li>
                                 </ul>
                             </div>
                         </li>
+                       
+
+                         <?php
+                              if(Yii::$app->user->identity->idrole == 1){
+                         ?>
                         <li class="d-flex flex-column">
                             <a data-toggle="collapse" href="#penggajian" class="collapsed nav-link" aria-expanded="false">
                                 <i class="nav-icon fa fa-money"></i>
@@ -168,7 +196,7 @@
                                 </ul>
                             </div>
                         </li>
-                       
+                       <?php } ?>
                     </ul>
                 </div>
             </div>

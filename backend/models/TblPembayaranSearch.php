@@ -41,7 +41,20 @@ class TblPembayaranSearch extends TblPembayaran
      */
     public function search($params)
     {
+         $mod = TblPenawaran::find()
+                ->joinWith('tblRequest')
+                ->Where(['idclient'=>Yii::$app->user->identity->id])
+                ->One();
+
+        $spk = TblPembayaran::find()
+                ->joinWith('tblSpk')
+                ->where(['idpenawaran'=>$mod->idpenawaran])
+                ->One();
+
         $query = TblPembayaran::find();
+         if(Yii::$app->user->identity->idrole == 2){
+            $query->where(['idspk'=>$spk->idspk]);
+         }
 
         // add conditions that should always apply here
 

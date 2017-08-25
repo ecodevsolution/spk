@@ -15,9 +15,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Tambah Spk', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?php
+        if(Yii::$app->user->identity->idrole == 1){
+    ?>
+        <p>
+            <?= Html::a('Tambah Spk', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+    <?php } ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -37,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'tgl_selesai',
             // 'harga_pekerjaan',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumns'],
         ],
     ]); ?>
 </div>

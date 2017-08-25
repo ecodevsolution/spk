@@ -41,7 +41,14 @@ class TblSpkSearch extends TblSpk
      */
     public function search($params)
     {
+        $mod = TblPenawaran::find()
+                ->joinWith('tblRequest')
+                ->Where(['idclient'=>Yii::$app->user->identity->id])
+                ->One();
         $query = TblSpk::find();
+         if(Yii::$app->user->identity->idrole == 2){
+            $query->where(['idpenawaran'=>$mod->idpenawaran]);
+         }
 
         // add conditions that should always apply here
 
