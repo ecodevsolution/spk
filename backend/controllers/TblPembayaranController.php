@@ -49,7 +49,7 @@ class TblPembayaranController extends Controller
 
     public function actionRiwayat(){
 
-         if($Yii::$app->user->identity->idrole == 1){
+         if(Yii::$app->user->identity->idrole == 1){
             $mod = TblPenawaran::find()
                     ->joinWith('tblRequest')                    
                     ->One();
@@ -59,7 +59,7 @@ class TblPembayaranController extends Controller
                     ->joinWith('tblSpk')                    
                     ->all();
          }
-           if($Yii::$app->user->identity->idrole == 2){
+           if(Yii::$app->user->identity->idrole == 2){
                 $mod = TblPenawaran::find()
                         ->joinWith('tblRequest')
                         ->Where(['idclient'=>Yii::$app->user->identity->id])
