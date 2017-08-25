@@ -12,7 +12,7 @@ use backend\models\TblDetailspk;
 use backend\models\TblSpk;  
 use backend\models\TblDetailabsensi;  
 
-
+date_default_timezone_set('Asia/Jakarta');
 /**
  * TblAbsensiController implements the CRUD actions for TblAbsensi model.
  */
