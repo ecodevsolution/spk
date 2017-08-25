@@ -46,10 +46,12 @@ class TblJadwalSearch extends TblJadwal
                 ->Where(['idclient'=>Yii::$app->user->identity->id])
                 ->One();
 
-        $spk = TblJadwal::find()
-                ->joinWith('tblSpk')
-                ->where(['idpenawaran'=>$mod->idpenawaran])
-                ->One();
+        if(isset($mod)){
+            $spk = TblJadwal::find()
+                    ->joinWith('tblSpk')
+                    ->where(['idpenawaran'=>$mod->idpenawaran])
+                    ->One();
+        }
 
         $query = TblJadwal::find();
          if(Yii::$app->user->identity->idrole == 2){
