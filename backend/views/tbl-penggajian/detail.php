@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
      <?php
          $connection = \Yii::$app->db;
-         $sqlzz = $connection->createCommand("SELECT  COUNT(username) * c.gaji Gaji FROM tbl_absensi e JOIN tbl_detailabsensi a ON e.idabsensi = a.idabsensi JOIN `user` b ON a.idpegawai = b.id JOIN tbl_jabatan c ON b.idjabatan = c.idjabatan WHERE e.idspk = '".$model->idspk."' AND a.jam_masuk <> '24:00:00'");
+         $sqlzz = $connection->createCommand("SELECT  COUNT(a.idpegawai) * c.gaji Gaji FROM tbl_absensi e JOIN tbl_detailabsensi a ON e.idabsensi = a.idabsensi JOIN `user` b ON a.idpegawai = b.id JOIN tbl_jabatan c ON b.idjabatan = c.idjabatan WHERE e.idspk = '".$model->idspk."' AND a.jam_masuk <> '24:00:00'");
          $modelzz = $sqlzz->queryOne();
     
     ?>
