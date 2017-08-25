@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
          <tbody>     
             <?php
                  $connection = \Yii::$app->db;
-                 $sql = $connection->createCommand("SELECT  username, name, nama_jabatan, COUNT(username) * c.gaji Gaji FROM tbl_absensi e JOIN tbl_detailabsensi a ON e.idabsensi = a.idabsensi JOIN `user` b ON a.idpegawai = b.id JOIN tbl_jabatan c ON b.idjabatan = c.idjabatan WHERE e.idspk = '".$model->idspk."' AND pengganti = '' GROUP BY username, name, nama_jabatan");
+                 $sql = $connection->createCommand("SELECT  username, name, nama_jabatan, COUNT(username) * c.gaji Gaji FROM tbl_absensi e JOIN tbl_detailabsensi a ON e.idabsensi = a.idabsensi JOIN `user` b ON a.idpegawai = b.id JOIN tbl_jabatan c ON b.idjabatan = c.idjabatan WHERE e.idspk = '".$model->idspk."' AND pengganti = '' AND a.jam_masuk <> '24:00:00' GROUP BY username, name, nama_jabatan");
                  $modelx = $sql->queryAll();
 
                  foreach($modelx as $models):
