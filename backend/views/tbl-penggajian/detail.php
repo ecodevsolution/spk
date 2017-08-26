@@ -16,8 +16,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
      <?php
          $connection = \Yii::$app->db;
-         $sqlzz = $connection->createCommand("SELECT  COUNT(a.idpegawai) * c.gaji Gaji FROM tbl_absensi e JOIN tbl_detailabsensi a ON e.idabsensi = a.idabsensi JOIN `user` b ON a.idpegawai = b.id JOIN tbl_jabatan c ON b.idjabatan = c.idjabatan WHERE e.idspk = '".$model->idspk."' AND a.jam_masuk <> '24:00:00'");
-         $modelzz = $sqlzz->queryOne();
+         $sqlzz = $connection->createCommand("  SELECT a.idpegawai ,  COUNT(a.idpegawai), gaji * COUNT(a.idpegawai) totGaji FROM tbl_absensi e JOIN tbl_detailabsensi a ON e.idabsensi = a.idabsensi JOIN `user` b ON a.idpegawai = b.id JOIN tbl_jabatan c ON b.idjabatan = c.idjabatan WHERE e.idspk = '".$model->idspk."' AND a.jam_masuk <> '24:00:00' GROUP BY a.idpegawai");
+         $modelzz = $sqlzz->queryAll();
+
+         $gajih = 0;
+         foreach($modelzz as $modelszz):
+                $gajih += $modelszz['totGaji'];
+        endforeach;
     
     ?>
     <table class="table">
@@ -36,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $model->tblSpk->area_pekerjaan; ?></td>
                 <td><?= $model->tblSpk->tgl_mulai; ?></td>
                 <td><?= $model->tblSpk->tgl_selesai; ?></td>
-                <td><?= 'Rp. '. number_format($modelzz['Gaji'],0,".",".")?></td>
+                <td><?= 'Rp. '. number_format($gajih,0,".",".")?></td>
              </tr>              
          </tbody>
      </table>

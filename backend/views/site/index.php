@@ -60,7 +60,7 @@
                 <div class="row">
                     <div class="col-sm-7">
                         <div class="numbers text-left">
-                            <p>On Schedule</p>
+                            <p>Jadwal</p>
                              <?php
                                 $jadwal = TblJadwal::find()
                                             ->count();
