@@ -42,7 +42,10 @@ $mode = TblJabatan::findOne($model->idjabatan);
             'no_ktp',
             'alamat_ktp',
             'alamat',
-            'tgl_lahir',
+             [
+                'label'=>'tgl Lahir',
+                'value'=>date('d-m-Y',strtotime($model->tgl_lahir))
+            ] , 
             
             'jenis_kelamin',
             'agama',
@@ -55,7 +58,7 @@ $mode = TblJabatan::findOne($model->idjabatan);
             // 'status',
             // 'created_at',
             // 'updated_at',
-            'idrole',
+            // 'idrole',
         ],
     ]) ?>
 

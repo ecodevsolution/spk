@@ -5,7 +5,7 @@
     use backend\models\TblRequest;
     use backend\models\TblDaftarharga;
     use wbraganca\dynamicform\DynamicFormWidget;
-    
+    use backend\models\TblPenawaran;
     
     /* @var $this yii\web\View */
     /* @var $model backend\models\TblPenawaran */
@@ -33,6 +33,7 @@
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">ID Penawaran</label>
                                 <div class="col-md-8">
+
                                     <?= $form->field($model, 'idpenawaran')->textInput(['maxlength' => true,'class'=>'form-control', 'value'=>$ask])->label(false); ?>
                                 </div>
                             </div>
@@ -42,11 +43,19 @@
                                 <div class="select">
                                     <label class="col-md-2 col-form-label">Nama required</label>
                                     <div class="col-md-8">
+                                     <?php
+                                            $array = TblPenawaran::find()
+                                                    ->select('idrequest')
+                                                    ->asArray()
+                                                    ->all();                                                                                      
+                                        ?>
                                         <?= $form->field($model, 'idrequest')->dropDownList(
-                                            ArrayHelper::map(TblRequest::find()->all(),'idrequest', 'nama_pekerjaan'),
+                                            ArrayHelper::map(TblRequest::find()->where(['not in','idrequest',$array])->all(),'idrequest', 'nama_pekerjaan'),
                                             ['prompt'=>'- Choose -',
-                                             'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
+                                             'style'=>'height: calc(3.25rem + 2px);','required'=>true])->label(false);                 
                                             ?>         
+
+                                              
                                     </div>
                                 </div>
                             </div>

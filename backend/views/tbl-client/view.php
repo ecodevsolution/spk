@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'no_ktp',
             // 'alamat_ktp',
             // 'alamat',
-            'tgl_lahir',
+            // 'tgl_lahir',
             'jenis_kelamin',
             // 'agama',
             'no_telp',

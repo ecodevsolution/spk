@@ -17,6 +17,10 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $this->render('_form', [
         'model' => $model,
         'nik' => $nik,
+         [
+                'label'=>'tgl Lahir',
+                'value'=>date('d-m-Y',strtotime($model->tgl_lahir))
+            ] ,
     ]) ?>
 
 </div>

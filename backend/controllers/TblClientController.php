@@ -237,7 +237,7 @@ class TblClientController extends Controller
 							}
 						</style>
 						<meta charset="utf-8">
-						<title>Data Pegawai</title>
+						<title>Data Client</title>
 					</head>
 					<body>
 						<header class="clearfix">

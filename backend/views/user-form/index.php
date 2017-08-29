@@ -35,7 +35,14 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'no_ktp',
             // 'alamat_ktp',
             // 'alamat',
-            // 'tgl_lahir',
+            //   [
+            //     'attribute' =>  'tgl_lahir',
+            //     'format' => 'raw',
+            //     'value' => function ($model) {       
+            //         return  date('d-m-Y',strtotime($model->tgl_lahir));
+                
+            //     },
+            // ], 
             'jenis_kelamin',
             // 'agama',
              'no_telp',
@@ -44,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'perusahaan',
             // 'password_hash',
             // 'password_reset_token',
-             'email:email',
+             // 'email:email',
             // 'status',
             // 'created_at',
             // 'updated_at',

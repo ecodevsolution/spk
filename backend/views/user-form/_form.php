@@ -48,18 +48,7 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset>
-                            <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Role</label>
-                                <div class="col-md-8">                                                
-                                    <?= $form->field($model, 'idrole')->dropDownList(
-                                        ArrayHelper::map(TblRole::find()->all(),'idrole', 'nama'),
-                                        ['prompt'=>'- Choose -',
-                                         'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
-                                        ?>
-                                </div>
-                            </div>
-                        </fieldset>
+                      
                         <fieldset>
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">Jabatan</label>

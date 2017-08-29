@@ -30,7 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'idjabatan',
             'nama_jabatan',
-            'gaji',
+             [
+                'attribute' =>  'gaji',
+                'format' => 'raw',
+                'value' => function ($model) {       
+                    return  'Rp. '.number_format($model->gaji,0,".",".");
+                
+                },
+            ],
         ],
     ]) ?>
 

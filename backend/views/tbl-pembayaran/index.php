@@ -33,7 +33,15 @@ $this->params['breadcrumbs'][] = $this->title;
 				},
 			],               
             'idspk',
-            'tgl_bayar',            
+            [
+                'attribute' =>  'tgl_bayar',
+                'format' => 'raw',
+                'value' => function ($model) {       
+                    return  date('d-m-Y',strtotime($model->tgl_bayar));
+                
+                },
+            ], 
+
             [
 				'attribute' =>  'total_bayar',
 				'format' => 'raw',

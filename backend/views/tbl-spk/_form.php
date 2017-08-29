@@ -6,7 +6,7 @@
     use yii\web\View;
     use backend\models\TblPenawaran;
     use wbraganca\dynamicform\DynamicFormWidget;
-        
+    use backend\models\TblSpk;    
     
     
     /* @var $this yii\web\View */
@@ -59,11 +59,19 @@
                                 <div class="select">
                                     <label class="col-md-2 col-form-label">Penawaran</label>
                                     <div class="col-md-8">
+                                     <?php
+                                            $array = TblSpk::find()
+                                                    ->select('idpenawaran')
+                                                    ->asArray()
+                                                    ->all();                                                                                      
+                                        ?>
                                         <?= $form->field($model, 'idpenawaran')->dropDownList(
-                                            ArrayHelper::map(TblPenawaran::find()->all(),'idpenawaran', 'idpenawaran'),
+                                            ArrayHelper::map(TblPenawaran::find()->where(['not in','idpenawaran',$array])->all(),'idpenawaran', 'idpenawaran'),
                                             ['prompt'=>'- Choose -',
-                                             'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
-                                            ?>         
+                                             'style'=>'height: calc(3.25rem + 2px);','required'=>true])->label(false);                 
+                                            ?>     
+
+                                              
                                     </div>
                                 </div>
                             </div>

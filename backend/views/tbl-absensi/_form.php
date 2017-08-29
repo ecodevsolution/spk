@@ -3,6 +3,7 @@
     use yii\widgets\ActiveForm;
     use yii\helpers\ArrayHelper;
     use backend\models\TblSpk;
+    use backend\models\TblAbsensi;
     use yii\web\View;
     /* @var $this yii\web\View */
     /* @var $model backend\models\TblAbsensi */
@@ -49,6 +50,7 @@
                                 <div class="select">
                                     <label class="col-md-2 col-form-label">SPK</label>
                                     <div class="col-md-8">
+                                      
                                         <?= $form->field($model, 'idspk')->dropDownList(
                                             ArrayHelper::map(TblSpk::find()->all(),'idspk', 'idspk'),
                                             ['prompt'=>'- Choose -',

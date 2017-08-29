@@ -65,8 +65,8 @@ class UserFormController extends Controller
     public function actionCreate()
     {
         $model = new UserForm();
-        $nik = mt_rand(100000,999999);
-        $nik = date('y').''.$nik;
+        $nik = mt_rand(10,99);
+        $nik = date('ymd').''.$nik;
 
         if ($model->load(Yii::$app->request->post())){
 
@@ -75,6 +75,7 @@ class UserFormController extends Controller
                 $model->created_at = date('Ydmh'); 
                 $model->tgl_lahir = date('Y-m-d',strtotime($model->tgl_lahir));               
                 $model->generateAuthKey();
+                $model->idrole = 1;
                 $model->save(false);
 
             return $this->redirect(['view', 'id' => $model->id]);
@@ -102,7 +103,7 @@ class UserFormController extends Controller
                          <td>'.$models['no_ktp'].'</td>
                          <td>'.$models['alamat_ktp'].'</td>
                          <td>'.$models['alamat'].'</td>
-                         <td>'.$models['tgl_lahir'].'</td>
+                         <td>'.date('d-m-Y',strtotime($models['tgl_lahir'])).'</td>
                          <td>'.$models['jenis_kelamin'].'</td>
                          <td>'.$models['agama'].'</td>
                          <td>'.$models['no_telp'].'</td>
