@@ -1,73 +1,48 @@
-1.validasi
 
-tabel pegawai : ok
-tabel role : ok 
-tabel jabatan : ok 
-tabel client : ok
-form client : ok
-tabel request : ok
- tabel penawaran : ok
-master daftar harga : 0k
-tabel spk : ok
-tabel jadwal : status jadwal on go terus -> done
-	       jadwal bisa dibuat berkali-kali -> done
-	      viewnya & report tambah tgl mulai dan selesai -> done
+pegawai isi id role perlukah?
+validasi :
+email ? kosong bisa di create
+on schedule ? jadwal atau jadwal yang sudah selesai?
+Edit SPK MAsih Ada
+jadwal sudah dibuat ga bisa buat lagi dengan nomer sama
+Request selesai -> masih bisa buat penawaran (harusnya tidak) -> SPK harusnya tidak bisa dibuat lagi ->
+Request Selesai -> ga bisa dibuat penawaran lagi
 
-tabel absensi : spk sudah selesai seharusnya tidak muncul karena jika ditambah eror.  ->done
-tabel pembayaran : sudah selesai seharusnya tidak muncul -> done
-
-tabel penggajian : status gaji on go terus -> done
+telp sama 
+email sama messege box sama tidak bisa di isi
 
 
 
-2. insert
-tabel pegawai : ok
-tabel role : ok 
-tabel jabatan : ok 
-tabel client : ok
-form client : ok
-tabel request : ok
- tabel penawaran : ok
-master daftar harga : 0k
-tabl spk : ok
-tabel jadwal : ok
-tabel absensi : ok
-tabel pembayaran : ok
-tabel penggajian : ok
+menu login client :
+CLient 
+Penawaran (tapi cuma bisa view)
+Pekerjaan (tapi cuma bisa view)
+Pembayaran (tapi cuma bisa view)
 
-3.view
-tabel pegawai : jabatan viewnya jangan id tapi labelnya. -> done
-view absensi belum
-riwayat pembayaran belum
-riwayat penggajian
-dashboard belum fungsi		    ->done
-tabel spk : hilangkan edit	    ->done
-tabel absensi : hilangkan edit      ->done
-tabel request : hilangkan edit      ->done
-idclient tampilkan nama client
-tabel penawaran : hilangkan edit    ->done
-tabel pembayaran : hilangkan edit   ->done
-tabel jadwal : hilangkan edit       ->done
-tambahkan rupiah		    ->done
-label report			    ->done
-view master harga : belum ada Rupiah
-
-4.report
-tabel pegawai : ok
-tabel client kenapa yang muncul cuma 1 ga semua?
-penawaran : tambahin nama yang request
-spk : ok
-jadwal : ok
-pembayran : ok hilangkan tax		->done
-
-additinoal : format tanggal di view & report dll belum dd-mm-yyyy (baru di input doang jadi belum keseluruhan)			
-tax 				    ->done
-	
-
-5. status 
-form request -> done
+menu login pegawai :
+role hilang
+jabatan (hanya bisa view)
+master daftar harga (cuma bisa view)
 
 
 
+  <fieldset>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Role</label>
+                                <div class="col-md-8">                                                
+                                    <?= $form->field($model, 'idrole')->dropDownList(
+                                        ArrayHelper::map(TblRole::find()->all(),'idrole', 'nama'),
+                                        ['prompt'=>'- Choose -',
+                                         'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
+                                        ?>
+                                </div>
+                            </div>
+                        </fieldset>
 
 
+
+  <?= $form->field($model, 'idrequest')->dropDownList(
+                                            ArrayHelper::map(TblRequest::find()->all(),'idrequest', 'nama_pekerjaan'),
+                                            ['prompt'=>'- Choose -',
+                                             'style'=>'height: calc(3.25rem + 2px);'])->label(false);                 
+                                            ?>  
